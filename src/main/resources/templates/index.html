@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Motos - Principal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            border-radius: 1.25rem;
+        }
+
+
+        .feature-card, .shortcut-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: none;
+        }
+        .feature-card:hover, .shortcut-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+        }
+
+
+        .icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-3">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2" href="/">
+            <i class="bi bi-gear-wide-connected text-warning"></i>
+            <span>Taller de Motos</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto gap-1">
+                <li class="nav-item">
+                    <a class="nav-link active rounded-pill px-3" href="/"><i class="bi bi-house-door me-1"></i>Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill px-3" href="/motorcycles"><i class="bi bi-bicycle me-1"></i>Motos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill px-3" href="/clients"><i class="bi bi-people me-1"></i>Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill px-3" href="/maintenances"><i class="bi bi-tools me-1"></i>Mantenimientos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<main class="container my-5 flex-grow-1">
+
+    {#if success}
+        <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4 rounded-3" role="alert">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+                <div>{success}</div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {/if}
+
+    {#if error}
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm border-0 mb-4 rounded-3" role="alert">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+                <div>{error}</div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {/if}
+
+
+    <div class="hero-banner p-5 mb-5 shadow-sm text-center position-relative overflow-hidden">
+        <div class="container py-3">
+            <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 px-3 py-2 rounded-pill fw-semibold mb-3">
+                <i class="bi bi-cpu me-1"></i> Powered by Quarkus & Hexagonal Architecture
+            </span>
+            <h1 class="display-4 fw-bold mb-3">Sistema de Gestión e Historial Técnico</h1>
+            <p class="col-lg-8 mx-auto fs-5 text-light opacity-75 mb-4">
+                Administra de forma eficiente las motos, el registro de clientes, programa mantenimientos preventivos/correctivos y genera reportes detallados en PDF.
+            </p>
+
+
+        </div>
+    </div>
+
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card shortcut-card shadow-sm rounded-4 h-100 p-4 bg-white">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <div class="icon-box bg-primary bg-opacity-10 text-primary mb-3">
+                        <i class="bi bi-bicycle"></i>
+                    </div>
+                    <h4 class="card-title fw-bold">Motos</h4>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Consulta la flota de motos registradas, agrega nuevos vehículos o actualiza sus especificaciones técnicas.
+                    </p>
+                    <a href="/motorcycles" class="btn btn-outline-primary rounded-pill px-4 fw-semibold mt-3 w-100">
+                        Gestionar Motos <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shortcut-card shadow-sm rounded-4 h-100 p-4 bg-white">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <div class="icon-box bg-success bg-opacity-10 text-success mb-3">
+                        <i class="bi bi-person-lines-fill"></i>
+                    </div>
+                    <h4 class="card-title fw-bold">Clientes</h4>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Directorio completo de propietarios. Registra nuevos clientes y asócialos con sus respectivos vehículos.
+                    </p>
+                    <a href="/clients" class="btn btn-outline-success rounded-pill px-4 fw-semibold mt-3 w-100">
+                        Gestionar Clientes <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shortcut-card shadow-sm rounded-4 h-100 p-4 bg-white">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <div class="icon-box bg-danger bg-opacity-10 text-danger mb-3">
+                        <i class="bi bi-journal-check"></i>
+                    </div>
+                    <h4 class="card-title fw-bold">Mantenimientos y Reportes</h4>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Revisa el historial de reparaciones, estados de servicios y descarga comprobantes o reportes en PDF.
+                    </p>
+                    <a href="/maintenances" class="btn btn-outline-danger rounded-pill px-4 fw-semibold mt-3 w-100">
+                        Ver Mantenimientos <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+<footer class="text-center py-4 text-muted border-top bg-white mt-auto">
+    <div class="container">
+        <p class="mb-1 small">&copy; 2026 <strong>Taller de Motos</strong> — Desarrollado con Arquitectura Hexagonal</p>
+        <p class="mb-0 text-muted extra-small" style="font-size: 0.8rem;">Sistema de gestión de servicios técnicos, motocicletas y clientes</p>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
