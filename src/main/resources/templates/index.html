@@ -1,100 +1,121 @@
 <!DOCTYPE html>
 <html lang="es">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taller de Motos - Principal</title>
+    <title>CF-MOTOS TALLER</title>
+    <link rel="icon" href="/img/logo-header.png" type="image/png">
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/index.css">
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f4f6f9;
-        }
-
-        .hero-banner {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: #ffffff;
-            border-radius: 1.25rem;
-        }
-
-
-        .feature-card, .shortcut-card {
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            border: none;
-        }
-        .feature-card:hover, .shortcut-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
-        }
-
-
-        .icon-box {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-        }
-    </style>
 </head>
+
 <body class="d-flex flex-column min-vh-100">
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-3">
-    <div class="container">
-        <a class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2" href="/">
-            <i class="bi bi-gear-wide-connected text-warning"></i>
-            <span>Taller de Motos</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto gap-1">
-                <li class="nav-item">
-                    <a class="nav-link active rounded-pill px-3" href="/"><i class="bi bi-house-door me-1"></i>Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link rounded-pill px-3" href="/motorcycles"><i class="bi bi-bicycle me-1"></i>Motos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link rounded-pill px-3" href="/clients"><i class="bi bi-people me-1"></i>Clientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link rounded-pill px-3" href="/maintenances"><i class="bi bi-tools me-1"></i>Mantenimientos</a>
-                </li>
-            </ul>
-        </div>
+<header class="cfmoto-header">
+    <div class="logo-section">
+        <img src="/img/logo-cfmoto.png.png" alt="CFMOTO Logo">
     </div>
-</nav>
 
+    <nav class="nav-section">
+        <ul>
+            <li>
+                <a href="/"><i class="bi bi-house-fill"></i> Inicio</a>
+            </li>
+            <li><a href="/motorcycles">Motos</a></li>
+            <li><a href="/clients">Clientes</a></li>
+            <li><a href="/maintenances">Mantenimientos</a></li>
+        </ul>
+    </nav>
+</header>
 
-<main class="container my-5 flex-grow-1">
+<main class="flex-grow-1 p-0 m-0 w-100">
 
-    {#if success}
-        <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4 rounded-3" role="alert">
-            <div class="d-flex align-items-center">
-                <i class="bi bi-check-circle-fill me-2 fs-5"></i>
-                <div>{success}</div>
+    <!-- 2. LAS ALERTAS tienen su propio container para que queden centradas y bonitas -->
+    <!-- (Le ponemos position-absolute para que floten encima del banner si aparecen) -->
+    <div class="container position-absolute start-50 translate-middle-x" style="z-index: 105; top: 90px;">
+
+        {#if success}
+            <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4 rounded-3" role="alert">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+                    <div>{success}</div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {/if}
+        {/if}
 
-    {#if error}
-        <div class="alert alert-danger alert-dismissible fade show shadow-sm border-0 mb-4 rounded-3" role="alert">
-            <div class="d-flex align-items-center">
-                <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
-                <div>{error}</div>
+        {#if error}
+            <div class="alert alert-danger alert-dismissible fade show shadow-sm border-0 mb-4 rounded-3" role="alert">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+                    <div>{error}</div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {/if}
+        {/if}
+
+    </div>
+
+
+    <main class="flex-grow-1">
+
+        <!-- === SECCIÓN HERO (BANNER) === -->
+        <section class="hero-section">
+                <a href="/contacto" class="btn-agenda">
+                    <i class="bi bi-wrench-adjustable"></i> Agenda Tu Cita
+                </a>
+            </div>
+        </section>
+
+        <!-- === SECCIÓN SERVICIOS (CAJA SUPERPUESTA) === -->
+        <section class="services-section">
+            <div class="services-container shadow-lg">
+                <!-- Decoraciones de las esquinas -->
+                <div class="deco-left"></div>
+                <div class="deco-right"></div>
+
+                <div class="services-layout">
+                    <!-- Título izquierdo -->
+                    <div class="services-header">
+                        <h2>Nuestros <br><span class="text-cyan">Servicios</span></h2>
+                        <p>Todo lo que tu moto<br>necesita, en un solo lugar.</p>
+                    </div>
+
+                    <!-- Tarjetas de servicios -->
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <i class="bi bi-gear-wide-connected"></i>
+                            <span>Mantenimiento<br>preventivo</span>
+                        </div>
+                        <div class="service-card">
+                            <i class="bi bi-tools"></i>
+                            <span>Reparacion<br>de motores</span>
+                        </div>
+                        <div class="service-card">
+                            <i class="bi bi-record-circle"></i>
+                            <span>Frenos y<br>Suspension</span>
+                        </div>
+                        <div class="service-card">
+                            <i class="bi bi-cpu"></i>
+                            <span>Diagnostico<br>Electronico</span>
+                        </div>
+                        <div class="service-card">
+                            <i class="bi bi-droplet-half"></i>
+                            <span>Cambio De<br>Aceite</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
 
 
     <div class="hero-banner p-5 mb-5 shadow-sm text-center position-relative overflow-hidden">

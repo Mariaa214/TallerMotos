@@ -1,0 +1,295 @@
+/* --- CONTENEDOR PRINCIPAL --- */
+.cfmoto-header {
+    display: flex;
+    width: 1100px;
+    height: 75px;
+    background: linear-gradient(to right, #fbfbfc, #e1e1e1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    font-family: 'Inter', sans-serif;
+    box-shadow: inset 0 -3px 0 0 #159b9d;
+    border-bottom-right-radius: 45px;
+    margin-bottom: 0;
+}
+
+/* --- SECCIÓN DEL LOGO --- */
+.logo-section {
+    background-color: #fbfbfc;
+    width: 340px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    position: relative;
+    z-index: 2;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 35px) 100%, 0 100%);
+}
+
+/* Línea turquesa más gruesa exclusiva para el área del logo */
+.logo-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-color: #159b9d;
+}
+
+.logo-section img {
+    height: 60px;
+    object-fit: contain;
+}
+
+
+/* --- NAVEGACIÓN Y ENLACES --- */
+.nav-section {
+    display: flex;
+    align-items: center;
+    padding-left: 3.5rem;
+    flex-grow: 1;
+}
+
+.nav-section ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 4.5rem; /* Espaciado entre opciones */
+}
+
+.nav-section a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 4px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Subrayado del enlace activo y hover */
+.nav-section li.active a {
+    border-bottom: 3px solid #159b9d;
+}
+
+.nav-section a:hover {
+    color: #159b9d;
+}
+
+.nav-section a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 4px;
+    border-bottom: 3px solid transparent; /* Línea oculta por defecto */
+    /* Aumentamos un poco el tiempo a 0.3s para que el brillo y la línea salgan más suaves */
+    transition: all 0.3s ease-in-out;
+}
+
+/* El enlace activo se queda igual */
+.nav-section li.active a {
+    border-bottom: 3px solid #159b9d;
+}
+
+/* --- NUEVO EFECTO HOVER --- */
+.nav-section a:hover {
+    color: #159b9d; /* Pinta el texto de turquesa */
+    border-bottom: 3px solid #159b9d; /* Hace aparecer la línea */
+    /* text-shadow crea ese efecto visual de que el texto "brilla" o se ilumina */
+    text-shadow: 0 0 12px rgba(21, 155, 157, 0.6);
+}
+
+
+/* --- VARIABLES Y UTILIDADES --- */
+:root {
+    --cyan-cfmoto: #159b9d;
+    --dark-text: #111827;
+}
+
+.text-cyan {
+    color: var(--cyan-cfmoto);
+}
+
+.hero-section {
+    background-image: url('/img/Fondo-cf.png');
+    background-size: cover;
+    background-position: center 20%;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+
+
+/* Botón Agenda Tu Cita */
+.btn-agenda {
+    background-color: var(--cyan-cfmoto);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transform: translate(100px, 230px);
+
+}
+
+.btn-agenda:hover {
+    background-color: #0e7a7c;
+    color: #fff;
+}
+
+/* --- SECCIÓN SERVICIOS (SUPERPUESTA) --- */
+.services-section {
+    padding: 0 5%;
+    /* Mueve la caja hacia arriba sobre el banner */
+    margin-top: -20px;
+    position: relative;
+    z-index: 10;
+}
+
+.services-container {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden; /* Para que las decoraciones no se salgan */
+}
+
+/* Decoraciones geométricas de la caja */
+.deco-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    background-color: rgba(21, 155, 157, 0.1);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.deco-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px;
+    height: 80px;
+    background-image: radial-gradient(var(--cyan-cfmoto) 20%, transparent 20%);
+    background-size: 16px 16px; /* Patrón de puntos/cuadros simulado */
+    opacity: 0.8;
+}
+
+.services-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.services-header h2 {
+    font-weight: 900;
+    font-style: italic;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text);
+}
+
+.services-header p {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Cuadrículas de tarjetas */
+.services-grid {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+.service-card {
+    background-color: #f3f4f6;
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    width: 140px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--cyan-cfmoto);
+}
+
+.service-card span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    line-height: 1.2;
+}
+
+
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f6f9;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #ffffff;
+    border-radius: 1.25rem;
+}
+
+
+.feature-card, .shortcut-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: none;
+}
+.feature-card:hover, .shortcut-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+}
+
+
+.icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+}
+</style>
