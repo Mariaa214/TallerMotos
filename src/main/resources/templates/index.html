@@ -1,202 +1,620 @@
+
 <!DOCTYPE html>
 <html lang="es">
-
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="CF-MOTOS TALLER: servicio especializado en reparación y mantenimiento de motocicletas.">
+
     <title>CF-MOTOS TALLER</title>
+
     <link rel="icon" href="/img/logo-header.png" type="image/png">
 
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+            rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+            rel="stylesheet">
+
+    <!-- CSS propio -->
     <link rel="stylesheet" href="/css/index.css">
-
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+
+<!-- ENCABEZADO -->
 <header class="cfmoto-header">
+
     <div class="logo-section">
-        <img src="/img/logo-cfmoto.png.png" alt="CFMOTO Logo">
+        <a href="/" aria-label="Ir al inicio">
+            <img
+                    src="/img/logo-cfmoto.png.png"
+                    alt="Logo de CFMOTO">
+        </a>
     </div>
 
-    <nav class="nav-section">
+    <nav class="nav-section" aria-label="Navegación principal">
         <ul>
             <li>
-                <a href="/"><i class="bi bi-house-fill"></i> Inicio</a>
+                <a href="/" aria-current="page">Inicio</a>
             </li>
-            <li><a href="/motorcycles">Motos</a></li>
-            <li><a href="/clients">Clientes</a></li>
-            <li><a href="/maintenances">Mantenimientos</a></li>
+            <li>
+                <a href="/motorcycles">Motos</a>
+            </li>
+            <li>
+                <a href="/clients">Clientes</a>
+            </li>
+            <li>
+                <a href="/maintenances">Mantenimientos</a>
+            </li>
         </ul>
     </nav>
+
 </header>
 
-<main class="flex-grow-1 p-0 m-0 w-100">
+<!-- CONTENIDO PRINCIPAL -->
+<main class="flex-grow-1">
 
-    <!-- 2. LAS ALERTAS tienen su propio container para que queden centradas y bonitas -->
-    <!-- (Le ponemos position-absolute para que floten encima del banner si aparecen) -->
-    <div class="container position-absolute start-50 translate-middle-x" style="z-index: 105; top: 90px;">
+    <!-- MENSAJES DEL SISTEMA -->
+    <div class="container alerts-container">
 
         {#if success}
-            <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4 rounded-3" role="alert">
+            <div
+                    class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4 rounded-3"
+                    role="alert">
+
                 <div class="d-flex align-items-center">
-                    <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+                    <i class="bi bi-check-circle-fill me-2 fs-5"
+                       aria-hidden="true"></i>
+
                     <div>{success}</div>
                 </div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Cerrar mensaje">
+                </button>
+
             </div>
         {/if}
 
         {#if error}
-            <div class="alert alert-danger alert-dismissible fade show shadow-sm border-0 mb-4 rounded-3" role="alert">
+            <div
+                    class="alert alert-danger alert-dismissible fade show shadow-sm border-0 mb-4 rounded-3"
+                    role="alert">
+
                 <div class="d-flex align-items-center">
-                    <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+                    <i class="bi bi-exclamation-triangle-fill me-2 fs-5"
+                       aria-hidden="true"></i>
+
                     <div>{error}</div>
                 </div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Cerrar mensaje">
+                </button>
+
             </div>
         {/if}
 
     </div>
 
+    <!-- HERO PRINCIPAL -->
+    <section class="hero-section" aria-labelledby="hero-title">
 
-    <main class="flex-grow-1">
+        <div class="hero-cfmoto">
 
-        <!-- === SECCIÓN HERO (BANNER) === -->
-        <section class="hero-section">
-                <a href="/contacto" class="btn-agenda">
-                    <i class="bi bi-wrench-adjustable"></i> Agenda Tu Cita
-                </a>
-            </div>
-        </section>
+            <div class="hero-overlay" aria-hidden="true"></div>
 
-        <!-- === SECCIÓN SERVICIOS (CAJA SUPERPUESTA) === -->
-        <section class="services-section">
-            <div class="services-container shadow-lg">
-                <!-- Decoraciones de las esquinas -->
-                <div class="deco-left"></div>
-                <div class="deco-right"></div>
+            <div class="hero-content">
 
-                <div class="services-layout">
-                    <!-- Título izquierdo -->
-                    <div class="services-header">
-                        <h2>Nuestros <br><span class="text-cyan">Servicios</span></h2>
-                        <p>Todo lo que tu moto<br>necesita, en un solo lugar.</p>
-                    </div>
-
-                    <!-- Tarjetas de servicios -->
-                    <div class="services-grid">
-                        <div class="service-card">
-                            <i class="bi bi-gear-wide-connected"></i>
-                            <span>Mantenimiento<br>preventivo</span>
-                        </div>
-                        <div class="service-card">
-                            <i class="bi bi-tools"></i>
-                            <span>Reparacion<br>de motores</span>
-                        </div>
-                        <div class="service-card">
-                            <i class="bi bi-record-circle"></i>
-                            <span>Frenos y<br>Suspension</span>
-                        </div>
-                        <div class="service-card">
-                            <i class="bi bi-cpu"></i>
-                            <span>Diagnostico<br>Electronico</span>
-                        </div>
-                        <div class="service-card">
-                            <i class="bi bi-droplet-half"></i>
-                            <span>Cambio De<br>Aceite</span>
-                        </div>
-                    </div>
+                <div class="hero-label">
+                    <span>TALLER ESPECIALIZADO</span>
+                    <div class="label-line"></div>
                 </div>
+
+                <h1 id="hero-title">
+                    Reparación y
+                    <span>Mantenimiento</span>
+                    de Motos
+                </h1>
+
+                <div class="hero-description">
+
+                    <div class="description-line"></div>
+
+                    <p>
+                        <strong>
+                            Servicio profesional, rápido y confiable
+                        </strong>
+                        <br>
+                        para que sigas rodando sin preocupaciones.
+                    </p>
+
+                </div>
+
+                <a href="#contacto" class="hero-button">
+
+                        <span class="button-icon" aria-hidden="true">
+                            <i class="bi bi-calendar-check"></i>
+                        </span>
+
+                    Agenda tu cita
+
+                    <span class="button-arrow" aria-hidden="true">
+                            <i class="bi bi-arrow-right"></i>
+                        </span>
+
+                </a>
+
             </div>
-        </section>
 
-    </main>
+        </div>
+
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="services-section" aria-labelledby="services-title">
+
+        <div class="services-container shadow-lg">
+
+            <div class="deco-left" aria-hidden="true"></div>
+            <div class="deco-right" aria-hidden="true"></div>
+
+            <div class="services-layout">
+
+                <!-- ENCABEZADO DE SERVICIOS -->
+                <div class="services-header">
+
+                    <h2 id="services-title">
+                        Nuestros
+                        <br>
+                        <span class="text-cyan">Servicios</span>
+                    </h2>
+
+                    <p>
+                        Todo lo que tu moto
+                        <br>
+                        necesita, en un solo lugar.
+                    </p>
+
+                </div>
+
+                <!-- LISTADO DE SERVICIOS -->
+                <div class="services-grid">
+
+                    <article class="service-card">
+                        <i class="bi bi-gear-wide-connected"
+                           aria-hidden="true"></i>
+
+                        <span>
+                                Mantenimiento
+                                <br>
+                                preventivo
+                            </span>
+                    </article>
+
+                    <article class="service-card">
+                        <i class="bi bi-tools"
+                           aria-hidden="true"></i>
+
+                        <span>
+                                Reparación
+                                <br>
+                                de motores
+                            </span>
+                    </article>
+
+                    <article class="service-card">
+                        <i class="bi bi-record-circle"
+                           aria-hidden="true"></i>
+
+                        <span>
+                                Frenos y
+                                <br>
+                                suspensión
+                            </span>
+                    </article>
+
+                    <article class="service-card">
+                        <i class="bi bi-cpu"
+                           aria-hidden="true"></i>
+
+                        <span>
+                                Diagnóstico
+                                <br>
+                                electrónico
+                            </span>
+                    </article>
+
+                    <article class="service-card">
+                        <i class="bi bi-droplet-half"
+                           aria-hidden="true"></i>
+
+                        <span>
+                                Cambio de
+                                <br>
+                                aceite
+                            </span>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
+    <!-- SECCIÓN NUESTROS SERVICIOS -->
+    <section class="workshop-services" aria-labelledby="workshop-services-title">
 
-    <div class="hero-banner p-5 mb-5 shadow-sm text-center position-relative overflow-hidden">
-        <div class="container py-3">
-            <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 px-3 py-2 rounded-pill fw-semibold mb-3">
-                <i class="bi bi-cpu me-1"></i> Powered by Quarkus & Hexagonal Architecture
-            </span>
-            <h1 class="display-4 fw-bold mb-3">Sistema de Gestión e Historial Técnico</h1>
-            <p class="col-lg-8 mx-auto fs-5 text-light opacity-75 mb-4">
-                Administra de forma eficiente las motos, el registro de clientes, programa mantenimientos preventivos/correctivos y genera reportes detallados en PDF.
+        <div class="services-background-decoration" aria-hidden="true">
+            <span class="decoration-circle"></span>
+            <span class="decoration-line"></span>
+        </div>
+
+        <!-- Encabezado -->
+        <div class="workshop-services-header">
+
+            <h2 id="workshop-services-title">
+               -- LO QUE
+                <span>OFRECEMOS --</span>
+            </h2>
+
+            <p>
+                Tecnología, experiencia y precisión para mantener
+                <br class="desktop-break">
+                tu motocicleta siempre en movimiento.
             </p>
 
+            <div class="services-title-decoration">
+                <span></span>
+                <i class="bi bi-gear-wide-connected"></i>
+                <span></span>
+            </div>
 
         </div>
-    </div>
 
+        <!-- Galería de servicios -->
+        <div class="services-arc-container">
 
-    <div class="row g-4 mb-5">
-        <div class="col-md-4">
-            <div class="card shortcut-card shadow-sm rounded-4 h-100 p-4 bg-white">
-                <div class="card-body d-flex flex-column align-items-start">
-                    <div class="icon-box bg-primary bg-opacity-10 text-primary mb-3">
-                        <i class="bi bi-bicycle"></i>
+            <div class="services-arc">
+
+                <!-- Servicio 1 -->
+                <article class="arc-service-card service-card-1">
+                    <div class="arc-service-image">
+                        <img
+                                src="/img/IMG1.jpg"
+                                alt="Mantenimiento preventivo de motocicletas"
+                                loading="lazy">
                     </div>
-                    <h4 class="card-title fw-bold">Motos</h4>
-                    <p class="card-text text-muted small flex-grow-1">
-                        Consulta la flota de motos registradas, agrega nuevos vehículos o actualiza sus especificaciones técnicas.
-                    </p>
-                    <a href="/motorcycles" class="btn btn-outline-primary rounded-pill px-4 fw-semibold mt-3 w-100">
-                        Gestionar Motos <i class="bi bi-arrow-right ms-1"></i>
-                    </a>
+
+                    <div class="arc-service-overlay"></div>
+
+                    <div class="arc-service-content">
+                        <h3>Mantenimiento</h3>
+                        <p>Preventivo y general</p>
+                    </div>
+
+                </article>
+
+                <!-- Servicio 2 -->
+                <article class="arc-service-card service-card-2">
+
+                    <div class="arc-service-image">
+                        <img
+                                src="/img/IMG2.jpg"
+                                alt="Reparación especializada de motores"
+                                loading="lazy">
+                    </div>
+
+                    <div class="arc-service-overlay"></div>
+
+                    <div class="arc-service-content">
+                        <h3>Reparación de motores</h3>
+                        <p>Potencia y rendimiento</p>
+                    </div>
+
+                </article>
+
+                <!-- Servicio 3 -->
+                <article class="arc-service-card service-card-3">
+
+                    <div class="arc-service-image">
+                        <img
+                                src="/img/IMG3.jpg"
+                                alt="Servicio de frenos y suspensión"
+                                loading="lazy">
+                    </div>
+
+                    <div class="arc-service-overlay"></div>
+
+                    <div class="arc-service-content">
+                        <h3>Frenos y suspensión</h3>
+                        <p>Seguridad en cada recorrido</p>
+                    </div>
+
+                </article>
+
+                <!-- Servicio 4 -->
+                <article class="arc-service-card service-card-4">
+
+                    <div class="arc-service-image">
+                        <img
+                                src="/img/IMG4.jpg"
+                                alt="Diagnóstico electrónico de motocicletas"
+                                loading="lazy">
+                    </div>
+
+                    <div class="arc-service-overlay"></div>
+
+                    <div class="arc-service-content">
+                        <h3>Diagnóstico electrónico</h3>
+                        <p>Precisión y tecnología</p>
+                    </div>
+
+                </article>
+
+                <!-- Servicio 5 -->
+                <article class="arc-service-card service-card-5">
+
+                    <div class="arc-service-image">
+                        <img
+                                src="/img/IMG5.jpg"
+                                alt="Cambio de aceite para motocicletas"
+                                loading="lazy">
+                    </div>
+
+                    <div class="arc--overlay"></div>
+
+                    <div class="arc-service-content">
+                        <h3>Cambio de aceite</h3>
+                        <p>Protección para tu motor</p>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="seccion-experiencia">
+        <div class="contenedor-experiencia">
+
+            <!-- Lado Izquierdo: Imagen Cuadrada -->
+            <div class="columna-imagen">
+                <img src="/img/Nosotros.png" alt="Taller CFMOTO" class="imagen-cuadrada">
+            </div>
+
+            <!-- Lado Derecho: Texto e Iconos -->
+            <div class="columna-texto">
+                <h2 class="banner-titulo">
+                    EXPERIENCIA, TECNOLOGÍA<br>
+                    Y <span class="texto-celeste">PASIÓN</span> POR LAS MOTOS
+                </h2>
+
+                <p class="banner-descripcion">
+                    Contamos con personal altamente calificado, herramientas
+                    de última generación y el compromiso de brindarte el
+                    mejor servicio.
+                </p>
+
+                <div class="banner-caracteristicas">
+                    <!-- Ítem 1 -->
+                    <div class="caracteristica-item">
+                        <img src="/img/trofeo.png" alt="100% Compromiso" class="caracteristica-icono">
+                        <div class="caracteristica-texto">
+                            <strong>100%</strong>
+                            <span>Compromiso</span>
+                        </div>
+                    </div>
+
+                    <div class="separador-vertical"></div>
+
+                    <!-- Ítem 2 -->
+                    <div class="caracteristica-item">
+                        <img src="/img/servi.png" alt="Servicio Premium" class="caracteristica-icono">
+                        <div class="caracteristica-texto">
+                            <strong>Servicio</strong>
+                            <span>Premium</span>
+                        </div>
+                    </div>
+
+                    <div class="separador-vertical"></div>
+
+                    <!-- Ítem 3 -->
+                    <div class="caracteristica-item">
+                        <img src="/img/premium.png" alt="Atención Integral" class="caracteristica-icono">
+                        <div class="caracteristica-texto">
+                            <strong>Atención</strong>
+                            <span>Integral</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card shortcut-card shadow-sm rounded-4 h-100 p-4 bg-white">
-                <div class="card-body d-flex flex-column align-items-start">
-                    <div class="icon-box bg-success bg-opacity-10 text-success mb-3">
-                        <i class="bi bi-person-lines-fill"></i>
-                    </div>
-                    <h4 class="card-title fw-bold">Clientes</h4>
-                    <p class="card-text text-muted small flex-grow-1">
-                        Directorio completo de propietarios. Registra nuevos clientes y asócialos con sus respectivos vehículos.
-                    </p>
-                    <a href="/clients" class="btn btn-outline-success rounded-pill px-4 fw-semibold mt-3 w-100">
-                        Gestionar Clientes <i class="bi bi-arrow-right ms-1"></i>
-                    </a>
+        </div>
+    </section>
+
+    <!-- GESTIÓN DEL TALLER -->
+    <section
+            class="management-section"
+            aria-label="Módulos de gestión del taller">
+
+        <div class="management-container">
+
+            <!-- GESTIÓN DE MOTOS -->
+            <article class="management-card">
+
+                <div class="management-image">
+                    <img
+                            src="/img/motos.jpg"
+                            alt="Motocicletas registradas en el taller"
+                            loading="lazy">
                 </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card shortcut-card shadow-sm rounded-4 h-100 p-4 bg-white">
-                <div class="card-body d-flex flex-column align-items-start">
-                    <div class="icon-box bg-danger bg-opacity-10 text-danger mb-3">
-                        <i class="bi bi-journal-check"></i>
-                    </div>
-                    <h4 class="card-title fw-bold">Mantenimientos y Reportes</h4>
-                    <p class="card-text text-muted small flex-grow-1">
-                        Revisa el historial de reparaciones, estados de servicios y descarga comprobantes o reportes en PDF.
-                    </p>
-                    <a href="/maintenances" class="btn btn-outline-danger rounded-pill px-4 fw-semibold mt-3 w-100">
-                        Ver Mantenimientos <i class="bi bi-arrow-right ms-1"></i>
-                    </a>
+                <div class="management-icon">
+                    <i class="bi bi-scooter"
+                       aria-hidden="true"></i>
                 </div>
-            </div>
-        </div>
-    </div>
 
+                <div class="management-content">
+
+                    <h3>Motos</h3>
+
+                    <p>
+                        Consulta la flota de motos registradas,
+                        agrega nuevos vehículos o actualiza
+                        sus especificaciones técnicas.
+                    </p>
+
+                    <a
+                            href="/motorcycles"
+                            class="management-button">
+
+                        Gestionar motos
+
+                        <i class="bi bi-chevron-right"
+                           aria-hidden="true"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+            <!-- GESTIÓN DE CLIENTES -->
+            <article class="management-card">
+
+                <div class="management-image">
+                    <img
+                            src="/img/clientes.jpg"
+                            alt="Atención y gestión de clientes"
+                            loading="lazy">
+                </div>
+
+                <div class="management-icon">
+                    <i class="bi bi-people"
+                       aria-hidden="true"></i>
+                </div>
+
+                <div class="management-content">
+
+                    <h3>Clientes</h3>
+
+                    <p>
+                        Administra la información de los propietarios,
+                        registra nuevos clientes y vincúlalos con
+                        sus respectivos vehículos.
+                    </p>
+
+                    <a
+                            href="/clients"
+                            class="management-button">
+
+                        Gestionar clientes
+
+                        <i class="bi bi-chevron-right"
+                           aria-hidden="true"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+            <!-- GESTIÓN DE MANTENIMIENTOS -->
+            <article class="management-card">
+
+                <div class="management-image">
+                    <img
+                            src="/img/Mantenimiento.jpg"
+                            alt="Servicios de mantenimiento y reparación"
+                            loading="lazy">
+                </div>
+
+                <div class="management-icon">
+                    <i class="bi bi-gear-wide-connected"
+                       aria-hidden="true"></i>
+                </div>
+
+                <div class="management-content">
+
+                    <h3>Mantenimiento y reportes</h3>
+
+                    <p>
+                        Consulta el historial de reparaciones,
+                        controla los servicios y genera
+                        comprobantes o reportes en PDF.
+                    </p>
+
+                    <a
+                            href="/maintenances"
+                            class="management-button">
+
+                        Ver mantenimientos
+
+                        <i class="bi bi-chevron-right"
+                           aria-hidden="true"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
 
 </main>
 
+<!-- PIE DE PÁGINA -->
 <footer class="text-center py-4 text-muted border-top bg-white mt-auto">
+
     <div class="container">
-        <p class="mb-1 small">&copy; 2026 <strong>Taller de Motos</strong> — Desarrollado con Arquitectura Hexagonal</p>
-        <p class="mb-0 text-muted extra-small" style="font-size: 0.8rem;">Sistema de gestión de servicios técnicos, motocicletas y clientes</p>
+
+        <p class="mb-1 small">
+            &copy; 2026
+            <strong>CF-MOTOS TALLER</strong>
+            — Desarrollado con Arquitectura Hexagonal
+        </p>
+
+        <p class="mb-0 text-muted extra-small">
+            Sistema de gestión de servicios técnicos,
+            motocicletas y clientes.
+        </p>
+
     </div>
+
 </footer>
 
+<!-- Bootstrap JS -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        defer>
+</script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
