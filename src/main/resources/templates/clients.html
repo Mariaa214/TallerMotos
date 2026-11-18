@@ -1,89 +1,281 @@
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Taller de Motos - Clientes</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="CF-MOTOS TALLER: servicio especializado en reparación y mantenimiento de motocicletas.">
+
+    <title>CF-MOTOS TALLER</title>
+
+    <link rel="icon" href="/img/logo-header.png" type="image/png">
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+            rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+            rel="stylesheet">
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="/css/clients.css">
 </head>
-<body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="/">Taller de Motos 🏍️</a>
-        <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="/">Inicio</a>
-            <a class="nav-link" href="/motorcycles">Motos</a>
-            <a class="nav-link active" href="/clients">Clientes</a>
-            <a class="nav-link" href="/maintenances">Mantenimientos</a>
-        </div>
-    </div>
-</nav>
+<body class="d-flex flex-column min-vh-100">
 
-<main class="container my-5">
+<!-- ENCABEZADO -->
+<header class="cfmoto-header">
 
-    {#if success}
-        <div class="alert alert-success alert-dismissible fade show shadow-sm mb-4" role="alert">
-            <i class="bi bi-check-circle-fill me-2"></i>{success}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {/if}
-    {#if error}
-        <div class="alert alert-danger alert-dismissible fade show shadow-sm mb-4" role="alert">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>{error}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {/if}
-
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-dark mb-0"><i class="bi bi-people-fill me-2"></i>Gestión de Clientes</h2>
-
-        <a href="/clients/new" class="btn btn-primary shadow-sm">
-            <i class="bi bi-plus-circle me-1"></i> Nuevo Cliente
+    <div class="logo-section">
+        <a href="/" aria-label="Ir al inicio">
+            <img
+                    src="/img/logo-cfmoto.png.png"
+                    alt="Logo de CFMOTO">
         </a>
     </div>
 
-    <div class="card shadow-sm border-0 rounded-4 overflow-hidden bg-white">
-        <div class="card-body p-0">
+    <nav class="nav-section" aria-label="Navegación principal">
+        <ul>
+            <li>
+                <a href="/" aria-current="page">Inicio</a>
+            </li>
+            <li>
+                <a href="/motorcycles">Motos</a>
+            </li>
+            <li>
+                <a href="/clients">Clientes</a>
+            </li>
+            <li>
+                <a href="/maintenances">Mantenimientos</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<section class="cfmoto-banner1">
+    <img src="/img/Banner3.jpg" alt="CFMOTO">
+
+    <div class="cfmoto-banner1-overlay"></div>
+    <div class="cfmoto-banner1-content">
+        <span>DESCUBRE TU LIBERTAD</span>
+        <h1>GESTIÓN DE<br><strong>CLIENTES</strong></h1>
+        <p>Administra, consulta y controla los clientes registrados en tu taller.</p>
+    </div>
+</section>
+
+
+<main class="clients-page">
+    <div class="container">
+
+        {#if success}
+            <div class="alert alert-success alert-dismissible fade show shadow-sm mb-4" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>{success}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {/if}
+
+        {#if error}
+            <div class="alert alert-danger alert-dismissible fade show shadow-sm mb-4" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>{error}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {/if}
+
+        <!-- ENCABEZADO -->
+        <div class="clients-heading">
+            <div class="heading-info">
+            </div>
+
+            <a href="/clients/new" class="btn-new-client">
+                <i class="bi bi-plus-lg"></i>
+                Nuevo Cliente
+            </a>
+        </div>
+
+        <!-- TABLA -->
+        <div class="clients-table-card">
+
+            <div class="table-top">
+                <div>
+                    <h5><i class="bi bi-person-lines-fill me-2"></i>Listado de clientes</h5>
+                    <p>Información general de los clientes registrados</p>
+                </div>
+            </div>
+
             <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
-                    <thead class="table-light text-secondary small text-uppercase">
+                <table class="table clients-table align-middle mb-0">
+
+                    <thead>
                     <tr>
                         <th class="ps-4">ID</th>
                         <th>Identificación</th>
                         <th>Nombre Completo</th>
                         <th>Teléfono</th>
-                        <th class="pe-4 text-end">Acciones</th>
+                        <th class="text-end pe-4">Acciones</th>
                     </tr>
                     </thead>
+
                     <tbody>
                     {#for client in clients}
                         <tr>
-                            <td class="ps-4 text-muted">#{client.id}</td>
-                            <td><span class="badge bg-light text-dark border font-monospace px-2 py-1">{client.identification}</span></td>
-                            <td class="fw-semibold">{client.fullName}</td>
-                            <td><i class="bi bi-telephone-fill text-muted me-1"></i>{client.phone}</td>
-                            <td class="pe-4 text-end">
-                                <!-- Botón Editar -->
-                                <a href="/clients/edit/{client.id}" class="btn btn-sm btn-outline-warning me-1" title="Editar">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
+                            <td class="ps-4">
+                                <span class="client-id">#{client.id}</span>
+                            </td>
 
-                                <a href="/clients/delete/{client.id}" class="btn btn-sm btn-outline-danger" title="Eliminar" onclick="return confirm('¿Estás seguro de eliminar este cliente?');">
-                                    <i class="bi bi-trash"></i>
-                                </a>
+                            <td>
+                                <span class="client-document">
+                                    <i class="bi bi-card-text"></i>
+                                    {client.identification}
+                                </span>
+                            </td>
+
+                            <td>
+                                <div class="client-name">
+                                    <div class="client-avatar">
+                                        <i class="bi bi-person-fill"></i>
+                                    </div>
+                                    <span>{client.fullName}</span>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="client-phone">
+                                    <i class="bi bi-telephone"></i>
+                                    {client.phone}
+                                </div>
+                            </td>
+
+                            <td class="text-end pe-4">
+                                <div class="client-actions">
+                                    <a href="/clients/edit/{client.id}"
+                                       class="action-btn edit-btn"
+                                       title="Editar">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+
+                                    <a href="/clients/delete/{client.id}"
+                                       class="action-btn delete-btn"
+                                       title="Eliminar"
+                                       onclick="return confirm('¿Estás seguro de eliminar este cliente?');">
+                                        <i class="bi bi-trash3"></i>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                     {/for}
                     </tbody>
+
                 </table>
             </div>
         </div>
+
     </div>
 </main>
 
-<footer class="text-center py-4 text-muted border-top bg-white mt-5">
-    <p class="mb-0 small">&copy; 2026 - Taller de Motos - Arquitectura Hexagonal</p>
+
+<footer class="cfmoto-footer">
+
+    <div class="footer-content">
+
+        <!-- MARCA -->
+        <div class="footer-brand">
+
+            <img src="/img/logo-cfmoto.png.png"
+                 alt="CFMOTO"
+                 class="footer-logo">
+
+            <h3>CF-MOTOS <span>TALLER</span></h3>
+
+            <p>
+                Pasión por las motocicletas, tecnología y
+                servicio especializado. Trabajamos para que
+                tu moto siempre esté lista para rodar.
+            </p>
+
+            <div class="footer-social">
+                <!-- FACEBOOK -->
+                <a href="https://www.facebook.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Facebook">
+
+                    <img src="/img/facebook.png" alt="Facebook">
+                </a>
+
+                <!-- INSTAGRAM -->
+                <a href="https://www.instagram.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Instagram">
+
+                    <img src="/img/instagram.png" alt="Instagram">
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="https://wa.me/57XXXXXXXXXX"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="WhatsApp">
+
+                    <img src="/img/whatsapp.png" alt="WhatsApp">
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ENLACES -->
+        <div class="footer-navigation">
+
+            <h4>Explora nuestro sitio</h4>
+
+            <span class="footer-underline"></span>
+
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/motorcycles">Motos</a></li>
+                <li><a href="/clients">Clientes</a></li>
+                <li><a href="/maintenances">Mantenimientos</a></li>
+            </ul>
+
+        </div>
+
+        <!-- SERVICIOS -->
+        <div class="footer-services">
+
+            <h4>Nuestro compromiso</h4>
+
+            <span class="footer-underline"></span>
+
+            <p>Servicio profesional</p>
+            <p>Calidad y confianza</p>
+            <p>Atención especializada</p>
+            <p>Pasión por las motocicletas</p>
+
+        </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 <strong>CF-MOTOS TALLER</strong>.
+            Todos los derechos reservados.
+        </p>
+
+    </div>
+
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

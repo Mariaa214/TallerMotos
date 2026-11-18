@@ -1,76 +1,279 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Taller de Motos - Registro de Cliente</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="CF-MOTOS TALLER: servicio especializado en reparación y mantenimiento de motocicletas.">
+
+    <title>CF-MOTOS TALLER</title>
+
+    <link rel="icon" href="/img/logo-header.png" type="image/png">
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+            rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+            rel="stylesheet">
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="/css/clientForm.css">
 </head>
-<body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="/">Taller de Motos 🏍️</a>
-        <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="/clients">Volver a Clientes</a>
-        </div>
+<body class="d-flex flex-column min-vh-100">
+
+<!-- ENCABEZADO -->
+<header class="cfmoto-header">
+
+    <div class="logo-section">
+        <a href="/" aria-label="Ir al inicio">
+            <img
+                    src="/img/logo-cfmoto.png.png"
+                    alt="Logo de CFMOTO">
+        </a>
     </div>
-</nav>
 
-<main class="container my-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-sm border-0 rounded-4 p-4 bg-white">
+    <nav class="nav-section" aria-label="Navegación principal">
+        <ul>
+            <a class="nav-link" href="/clients">Volver a Clientes</a>
+        </ul>
+    </nav>
 
-                {#if client != null && client.id != null}
-                    <h3 class="fw-bold text-primary mb-4">
-                        <i class="bi bi-pencil-square me-2"></i>Editar Cliente
-                    </h3>
-                {#else}
-                    <h3 class="fw-bold text-primary mb-4">
-                        <i class="bi bi-plus-circle me-2"></i>Registrar Nuevo Cliente
-                    </h3>
-                {/if}
+</header>
 
 
-                <form action="{#if client.id}/clients/update{#else}/clients/save{/if}" method="POST">
-                    <!-- Campo oculto crucial para que llegue el ID al actualizar -->
-                    {#if client.id}
-                        <input type="hidden" name="id" value="{client.id}">
-                    {/if}
 
-                        <div class="mb-3">
-                            <label for="identification" class="form-label fw-semibold">Identificación</label>
-                            <input type="text" class="form-control" id="identification" name="identification" value="{client.identification ?: ''}" required>
+
+<main class="client-form-page">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-6">
+
+                <div class="client-form-card">
+
+                    <!-- ENCABEZADO -->
+                    <div class="client-form-header">
+
+                        {#if client != null && client.id != null}
+                            <h3>Editar <span>Cliente</span></h3>
+                            <p>Actualiza los datos personales del cliente registrado.</p>
+                        {#else}
+                            <span class="client-form-label">GESTIÓN DE CLIENTES</span>
+                            <h3>Nuevo <span>Cliente</span></h3>
+                            <p>Registra un nuevo cliente en el sistema.</p>
+                        {/if}
+
+                    </div>
+
+                    <div class="client-form-divider"></div>
+
+                    <!-- FORMULARIO -->
+                    <form action="{#if client.id}/clients/update{#else}/clients/save{/if}" method="POST">
+
+                        {#if client.id}
+                            <input type="hidden" name="id" value="{client.id}">
+                        {/if}
+
+                        <!-- IDENTIFICACIÓN -->
+                        <div class="client-field">
+                            <label for="identification">
+                                <i class="bi bi-card-heading"></i>
+                                Identificación
+                            </label>
+
+                            <div class="client-input-wrapper">
+                                <i class="bi bi-person-vcard input-icon"></i>
+                                <input
+                                        type="text"
+                                        class="form-control client-modern-input"
+                                        id="identification"
+                                        name="identification"
+                                        value="{client.identification ?: ''}"
+                                        placeholder="Ingresa el número de identificación"
+                                        required>
+                            </div>
+                            <small>Documento de identidad del cliente.</small>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="fullName" class="form-label fw-semibold">Nombre Completo</label>
-                            <input type="text" class="form-control" id="fullName" name="fullName" value="{client.fullName ?: ''}" required>
+                        <!-- NOMBRE -->
+                        <div class="client-field">
+                            <label for="fullName">
+                                <i class="bi bi-person"></i>
+                                Nombre Completo
+                            </label>
+
+                            <div class="client-input-wrapper">
+                                <i class="bi bi-person input-icon"></i>
+                                <input
+                                        type="text"
+                                        class="form-control client-modern-input"
+                                        id="fullName"
+                                        name="fullName"
+                                        value="{client.fullName ?: ''}"
+                                        placeholder="Ingresa el nombre completo"
+                                        required>
+                            </div>
+                            <small>Nombres y apellidos del propietario.</small>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="phone" class="form-label fw-semibold">Teléfono</label>
-                            <input type="text" class="form-control" id="phone" name="phone" value="{client.phone ?: ''}" required>
+                        <!-- TELÉFONO -->
+                        <div class="client-field">
+                            <label for="phone">
+                                <i class="bi bi-telephone"></i>
+                                Teléfono
+                            </label>
+
+                            <div class="client-input-wrapper">
+                                <i class="bi bi-phone input-icon"></i>
+                                <input
+                                        type="text"
+                                        class="form-control client-modern-input"
+                                        id="phone"
+                                        name="phone"
+                                        value="{client.phone ?: ''}"
+                                        placeholder="Ingresa el número de teléfono"
+                                        required>
+                            </div>
+                            <small>Número de contacto del cliente.</small>
                         </div>
 
-                        <div class="d-flex justify-content-between mt-4">
-                            <a href="/clients" class="btn btn-secondary px-4">Cancelar</a>
+                        <!-- BOTONES -->
+                        <div class="client-form-actions">
+
+                            <a href="/clients" class="client-cancel-btn">
+                                <i class="bi bi-arrow-left"></i>
+                                Cancelar
+                            </a>
 
                             {#if client.id != null}
-                                <button type="submit" class="btn btn-primary px-4 fw-bold">Guardar Cambios</button>
+                                <button type="submit" class="client-save-btn">
+                                    <i class="bi bi-check2-circle"></i>
+                                    Guardar Cambios
+                                </button>
                             {#else}
-                                <button type="submit" class="btn btn-primary px-4 fw-bold">Registrar Cliente</button>
+                                <button type="submit" class="client-save-btn">
+                                    <i class="bi bi-person-plus-fill"></i>
+                                    Registrar Cliente
+                                </button>
                             {/if}
+
                         </div>
+
                     </form>
+
+                </div>
+
             </div>
         </div>
     </div>
 </main>
 
-<footer class="text-center py-4 text-muted border-top bg-white mt-5">
-    <p class="mb-0 small">&copy; 2026 - Taller de Motos - Arquitectura Hexagonal</p>
+
+
+
+<footer class="cfmoto-footer">
+
+    <div class="footer-content">
+
+        <!-- MARCA -->
+        <div class="footer-brand">
+
+            <img src="/img/logo-cfmoto.png.png"
+                 alt="CFMOTO"
+                 class="footer-logo">
+
+            <h3>CF-MOTOS <span>TALLER</span></h3>
+
+            <p>
+                Pasión por las motocicletas, tecnología y
+                servicio especializado. Trabajamos para que
+                tu moto siempre esté lista para rodar.
+            </p>
+
+            <div class="footer-social">
+                <!-- FACEBOOK -->
+                <a href="https://www.facebook.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Facebook">
+
+                    <img src="/img/facebook.png" alt="Facebook">
+                </a>
+
+                <!-- INSTAGRAM -->
+                <a href="https://www.instagram.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Instagram">
+
+                    <img src="/img/instagram.png" alt="Instagram">
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="https://wa.me/57XXXXXXXXXX"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="WhatsApp">
+
+                    <img src="/img/whatsapp.png" alt="WhatsApp">
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ENLACES -->
+        <div class="footer-navigation">
+
+            <h4>Explora nuestro sitio</h4>
+
+            <span class="footer-underline"></span>
+
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/motorcycles">Motos</a></li>
+                <li><a href="/clients">Clientes</a></li>
+                <li><a href="/maintenances">Mantenimientos</a></li>
+            </ul>
+
+        </div>
+
+        <!-- SERVICIOS -->
+        <div class="footer-services">
+
+            <h4>Nuestro compromiso</h4>
+
+            <span class="footer-underline"></span>
+
+            <p>Servicio profesional</p>
+            <p>Calidad y confianza</p>
+            <p>Atención especializada</p>
+            <p>Pasión por las motocicletas</p>
+
+        </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 <strong>CF-MOTOS TALLER</strong>.
+            Todos los derechos reservados.
+        </p>
+
+    </div>
+
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

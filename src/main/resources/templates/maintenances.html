@@ -1,135 +1,320 @@
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taller de Motos - Mantenimientos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <meta name="description"
+          content="CF-MOTOS TALLER: servicio especializado en reparación y mantenimiento de motocicletas.">
+
+    <title>CF-MOTOS TALLER</title>
+
+    <link rel="icon" href="/img/logo-header.png" type="image/png">
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+            rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+            rel="stylesheet">
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="/css/maintenances.css">
 </head>
-<body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="/">Taller de Motos 🏍️</a>
-        <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="/">Inicio</a>
-            <a class="nav-link" href="/motorcycles">Motos</a>
-            <a class="nav-link" href="/clients">Clientes</a>
-            <a class="nav-link active" href="/maintenances">Mantenimientos</a>
-        </div>
+<body class="d-flex flex-column min-vh-100">
+
+<!-- ENCABEZADO -->
+<header class="cfmoto-header">
+
+    <div class="logo-section">
+        <a href="/" aria-label="Ir al inicio">
+            <img
+                    src="/img/logo-cfmoto.png.png"
+                    alt="Logo de CFMOTO">
+        </a>
     </div>
-</nav>
 
-<main class="container my-5">
-    <h2 class="mb-4 fw-bold text-dark"><i class="bi bi-tools me-2"></i>Gestión de Mantenimientos</h2>
+    <nav class="nav-section" aria-label="Navegación principal">
+        <ul>
+            <li>
+                <a href="/" aria-current="page">Inicio</a>
+            </li>
+            <li>
+                <a href="/motorcycles">Motos</a>
+            </li>
+            <li>
+                <a href="/clients">Clientes</a>
+            </li>
+            <li>
+                <a href="/maintenances">Mantenimientos</a>
+            </li>
+        </ul>
+    </nav>
+</header>
 
 
-    {#if success}
-        <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
-            <i class="bi bi-check-circle-fill me-2"></i>{success}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {/if}
-    {#if error}
-        <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>{error}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {/if}
+<section class="cfmoto-banner1">
+    <img src="/img/Banner4.jpg" alt="CFMOTO">
 
-    <div class="row">
+    <div class="cfmoto-banner1-overlay"></div>
+    <div class="cfmoto-banner1-content">
+        <span>DESCUBRE TU LIBERTAD</span>
+        <h1>GESTIÓN DE<br><strong>MANTENIMIENTO</strong></h1>
+        <p>Administra, consulta y controla los mantenimientos registrados en tu taller.</p>
+    </div>
+</section>
 
-        <div class="col-lg-4 mb-4">
-            <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
-                <div class="card-header bg-primary text-white py-3">
-                    <h5 class="mb-0 fw-semibold">
-                        {#if maintenance.id != null}
-                            <i class="bi bi-pencil-square me-2"></i>Editar Mantenimiento
-                        {#else}
-                            <i class="bi bi-plus-circle me-2"></i>Registrar Mantenimiento
-                        {/if}
-                    </h5>
+
+
+<main class="maintenance-page">
+    <div class="container">
+
+        <!-- ENCABEZADO PRINCIPAL -->
+        <div class="maintenance-heading">
+            <div class="heading-left">
+                <div class="maintenance-heading-icon">
+                    <i class="bi bi-tools"></i>
                 </div>
-                <div class="card-body p-4">
-                    <form action="{#if maintenance.id}/maintenances/update{#else}/maintenances/save{/if}" method="POST">
-
-                        {#if maintenance.id != null}
-                            <input type="hidden" name="id" value="{maintenance.id}">
-                        {/if}
-
-                        <div class="mb-3">
-                            <label for="maintenanceDate" class="form-label fw-semibold">Fecha</label>
-                            <input type="date" class="form-control" id="maintenanceDate" name="maintenanceDate" value="{maintenance.maintenanceDate ?: ''}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="description" class="form-label fw-semibold">Descripción del Servicio</label>
-                            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Ej. Cambio de aceite y revisión de frenos" required>{maintenance.description ?: ''}</textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="cost" class="form-label fw-semibold">Costo ($)</label>
-                            <input type="number" step="0.01" class="form-control" id="cost" name="cost" placeholder="0.00" value="{#if maintenance.id}{maintenance.cost}{/if}" min="0.01" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="mechanicName" class="form-label fw-semibold">Nombre del Mecánico</label>
-                            <input type="text" class="form-control" id="mechanicName" name="mechanicName" placeholder="Ej. Carlos Pérez" value="{maintenance.mechanicName ?: ''}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="motorcycleId" class="form-label fw-semibold">Motocicleta</label>
-                            <select class="form-select" id="motorcycleId" name="motorcycleId" required>
-                                <option value="">-- Seleccione una moto --</option>
-                                {#for moto in motorcycles}
-                                    <option value="{moto.id}" {#if maintenance.motorcycle && maintenance.motorcycle.id == moto.id}selected{/if}>
-                                        {moto.plate} - {moto.brand} ({moto.client.fullName ?: 'Sin cliente'})
-                                    </option>
-                                {/for}
-                            </select>
-                        </div>
-
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn {#if maintenance.id}btn-warning text-dark{#else}btn-success{/if} py-2 fw-bold shadow-sm">
-                                {#if maintenance.id != null}
-                                    <i class="bi bi-check-lg me-2"></i>Guardar Cambios
-                                {#else}
-                                    <i class="bi bi-save me-2"></i>Guardar Mantenimiento
-                                {/if}
-                            </button>
-
-                            {#if maintenance.id != null}
-                                <a href="/maintenances" class="btn btn-outline-secondary py-2 fw-semibold">Cancelar Edición</a>
-                            {/if}
-                        </div>
-                    </form>
+                <div>
+                    <span class="maintenance-eyebrow">CENTRO DE SERVICIO</span>
+                    <h2>Gestión de <span>Mantenimientos</span></h2>
+                    <p>Administra los servicios y el historial de tus motocicletas.</p>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-8">
-            <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
-                <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0 fw-bold text-dark"><i class="bi bi-clock-history me-2"></i>Historial de Mantenimientos</h5>
-                    <a href="/reports/maintenances/pdf{#if selectedPlate}?plate={selectedPlate}{/if}" class="btn btn-outline-danger btn-sm px-3 fw-semibold">
-                        <i class="bi bi-file-earmark-pdf-fill me-1"></i> Descargar PDF
-                    </a>
-                </div>
+        <!-- ALERTAS -->
+        {#if success}
+            <div class="alert alert-success alert-dismissible fade show shadow-sm mb-4" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>{success}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {/if}
 
-                <div class="px-4 py-3 border-bottom bg-light">
-                    <form action="/maintenances" method="GET" class="row g-2 align-items-center">
-                        <div class="col">
-                            <input type="text" class="form-control" name="plate" placeholder="Buscar historial por placa (ej. ABC12D)" value="{selectedPlate ?: ''}">
+        {#if error}
+            <div class="alert alert-danger alert-dismissible fade show shadow-sm mb-4" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>{error}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {/if}
+
+        <div class="row g-4">
+
+            <!-- FORMULARIO DE MANTENIMIENTO -->
+            <div class="col-lg-4">
+
+                <div class="maintenance-panel form-panel">
+
+                    <div class="panel-heading">
+                        <div class="panel-heading-icon">
+                            <i class="bi bi-clipboard2-plus"></i>
                         </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-search me-1"></i>Buscar</button>
-                            {#if selectedPlate}
-                                <a href="/maintenances" class="btn btn-outline-secondary">Ver todos</a>
+
+                        <div>
+                            <span>REGISTRO DE SERVICIOS</span>
+                            {#if maintenance.id != null}
+                                <h5>Editar Mantenimiento</h5>
+                            {#else}
+                                <h5>Nuevo Mantenimiento</h5>
                             {/if}
                         </div>
-                    </form>
+                    </div>
+
+                    <div class="panel-divider"></div>
+
+                    <div class="maintenance-form-body">
+
+                        <form action="{#if maintenance.id}/maintenances/update{#else}/maintenances/save{/if}" method="POST">
+
+                            {#if maintenance.id != null}
+                                <input type="hidden" name="id" value="{maintenance.id}">
+                            {/if}
+
+                            <!-- FECHA -->
+                            <div class="maintenance-field">
+                                <label for="maintenanceDate">
+                                    <i class="bi bi-calendar3"></i>
+                                    Fecha del servicio
+                                </label>
+                                <input type="date"
+                                       class="form-control maintenance-input"
+                                       id="maintenanceDate"
+                                       name="maintenanceDate"
+                                       value="{maintenance.maintenanceDate ?: ''}"
+                                       required>
+                            </div>
+
+                            <!-- DESCRIPCIÓN -->
+                            <div class="maintenance-field">
+                                <label for="description">
+                                    <i class="bi bi-card-text"></i>
+                                    Descripción del Servicio
+                                </label>
+                                <textarea class="form-control maintenance-input"
+                                          id="description"
+                                          name="description"
+                                          rows="3"
+                                          placeholder="Ej. Cambio de aceite y revisión de frenos"
+                                          required>{maintenance.description ?: ''}</textarea>
+                            </div>
+
+                            <!-- COSTO -->
+                            <div class="maintenance-field">
+                                <label for="cost">
+                                    <i class="bi bi-cash-coin"></i>
+                                    Costo del Servicio
+                                </label>
+                                <div class="maintenance-input-group">
+                                    <span>$</span>
+                                    <input type="number"
+                                           step="0.01"
+                                           class="form-control maintenance-input"
+                                           id="cost"
+                                           name="cost"
+                                           placeholder="0.00"
+                                           value="{#if maintenance.id}{maintenance.cost}{/if}"
+                                           min="0.01"
+                                           required>
+                                </div>
+                            </div>
+
+                            <!-- MECÁNICO -->
+                            <div class="maintenance-field">
+                                <label for="mechanicName">
+                                    <i class="bi bi-person-gear"></i>
+                                    Nombre del Mecánico
+                                </label>
+                                <input type="text"
+                                       class="form-control maintenance-input"
+                                       id="mechanicName"
+                                       name="mechanicName"
+                                       placeholder="Ej. Carlos Pérez"
+                                       value="{maintenance.mechanicName ?: ''}"
+                                       required>
+                            </div>
+
+                            <!-- MOTOCICLETA -->
+                            <div class="maintenance-field">
+                                <label for="motorcycleId">
+                                    <i class="bi bi-motorcycle"></i>
+                                    Motocicleta
+                                </label>
+                                <select class="form-select maintenance-input"
+                                        id="motorcycleId"
+                                        name="motorcycleId"
+                                        required>
+                                    <option value="">-- Seleccione una moto --</option>
+                                    {#for moto in motorcycles}
+                                        <option value="{moto.id}" {#if maintenance.motorcycle && maintenance.motorcycle.id == moto.id}selected{/if}>
+                                            {moto.plate} - {moto.brand} ({moto.client.fullName ?: 'Sin cliente'})
+                                        </option>
+                                    {/for}
+                                </select>
+                            </div>
+
+                            <!-- BOTONES -->
+                            <div class="maintenance-form-actions">
+
+                                <button type="submit" class="maintenance-save-btn">
+                                    {#if maintenance.id != null}
+                                        <i class="bi bi-check2-circle"></i>
+                                        Guardar Cambios
+                                    {#else}
+                                        <i class="bi bi-save"></i>
+                                        Guardar Mantenimiento
+                                    {/if}
+                                </button>
+
+                                {#if maintenance.id != null}
+                                    <a href="/maintenances" class="maintenance-cancel-btn">
+                                        <i class="bi bi-x-circle"></i>
+                                        Cancelar Edición
+                                    </a>
+                                {/if}
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <div class="form-panel-footer">
+                        <i class="bi bi-shield-check"></i>
+                        Registro y control de servicios
+                    </div>
+
                 </div>
-                <div class="card-body p-0">
+            </div>
+
+            <!-- HISTORIAL DE MANTENIMIENTOS -->
+            <div class="col-lg-8">
+
+                <div class="maintenance-panel history-panel">
+
+                    <!-- CABECERA HISTORIAL -->
+                    <div class="history-heading">
+                        <div class="history-title">
+                            <div class="history-icon">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+
+                            <div>
+                                <span>CONTROL VEHICULAR</span>
+                                <h5>Historial de Mantenimientos</h5>
+                                <p>Consulta los servicios realizados a cada motocicleta.</p>
+                            </div>
+                        </div>
+
+                        <a href="/reports/maintenances/pdf{#if selectedPlate}?plate={selectedPlate}{/if}"
+                           class="maintenance-pdf-btn">
+                            <i class="bi bi-file-earmark-pdf-fill"></i>
+                            Descargar PDF
+                        </a>
+                    </div>
+
+                    <!-- BUSCADOR -->
+                    <div class="maintenance-search-area">
+                        <form action="/maintenances" method="GET" class="maintenance-search-form">
+
+                            <div class="search-input-wrapper">
+                                <i class="bi bi-search"></i>
+                                <input type="text"
+                                       class="form-control"
+                                       name="plate"
+                                       placeholder="Buscar historial por placa (ej. ABC12D)"
+                                       value="{selectedPlate ?: ''}">
+                            </div>
+
+                            <button type="submit" class="maintenance-search-btn">
+                                Buscar
+                            </button>
+
+                            {#if selectedPlate}
+                                <a href="/maintenances" class="maintenance-reset-btn">
+                                    <i class="bi bi-arrow-counterclockwise"></i>
+                                    Ver todos
+                                </a>
+                            {/if}
+
+                        </form>
+                    </div>
+
+                    <!-- TABLA -->
                     <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light text-secondary small text-uppercase">
+                        <table class="table maintenance-table align-middle mb-0">
+
+                            <thead>
                             <tr>
                                 <th class="ps-4">Fecha</th>
                                 <th>Descripción</th>
@@ -139,39 +324,194 @@
                                 <th class="pe-4 text-end">Acciones</th>
                             </tr>
                             </thead>
+
                             <tbody>
                             {#for m in maintenances}
                                 <tr>
-                                    <td class="ps-4 text-muted">{m.maintenanceDate}</td>
-                                    <td class="fw-semibold">{m.description}</td>
-                                    <td><span class="text-success fw-bold">$ {m.cost}</span></td>
-                                    <td>{m.mechanicName}</td>
-                                    <td><span class="badge bg-dark font-monospace">{m.motorcycle.plate ?: 'N/A'}</span></td>
-                                    <td class="pe-4 text-end">
-                                        <a href="/maintenances/edit/{m.id}" class="btn btn-sm btn-outline-warning me-1" title="Editar">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <a href="/maintenances/delete/{m.id}" class="btn btn-sm btn-outline-danger" title="Eliminar" onclick="return confirm('¿Estás seguro de eliminar este mantenimiento?');">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
+
+                                    <td class="ps-4">
+                                        <div class="maintenance-date">
+                                            <i class="bi bi-calendar-event"></i>
+                                            {m.maintenanceDate}
+                                        </div>
                                     </td>
+
+                                    <td>
+                                        <div class="maintenance-description">
+                                            {m.description}
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                            <span class="maintenance-cost">
+                                                $ {m.cost}
+                                            </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="maintenance-mechanic">
+                                            <div class="mechanic-avatar">
+                                                <i class="bi bi-person-fill"></i>
+                                            </div>
+                                            {m.mechanicName}
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                            <span class="maintenance-plate">
+                                                <i class="bi bi-motorcycle"></i>
+                                                {m.motorcycle.plate ?: 'N/A'}
+                                            </span>
+                                    </td>
+
+                                    <td class="pe-4">
+                                        <div class="maintenance-actions">
+
+                                            <a href="/maintenances/edit/{m.id}"
+                                               class="maintenance-action edit-action"
+                                               title="Editar">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+
+                                            <a href="/maintenances/delete/{m.id}"
+                                               class="maintenance-action delete-action"
+                                               title="Eliminar"
+                                               onclick="return confirm('¿Estás seguro de eliminar este mantenimiento?');">
+                                                <i class="bi bi-trash3"></i>
+                                            </a>
+
+                                        </div>
+                                    </td>
+
                                 </tr>
+
                             {#else}
                                 <tr>
-                                    <td colspan="6" class="text-center text-muted py-4">No hay mantenimientos registrados.</td>
+                                    <td colspan="6" class="maintenance-empty">
+                                        <div class="empty-icon">
+                                            <i class="bi bi-clipboard2-x"></i>
+                                        </div>
+                                        <h6>No hay mantenimientos registrados</h6>
+                                        <p>Cuando registres un servicio, aparecerá aquí.</p>
+                                    </td>
                                 </tr>
                             {/for}
                             </tbody>
+
                         </table>
                     </div>
+
+                    <div class="history-footer">
+                        <span>
+                            <i class="bi bi-shield-check"></i>
+                            Historial de servicios
+                        </span>
+                        <span>Panel de administración</span>
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
     </div>
 </main>
 
-<footer class="text-center py-4 text-muted border-top bg-white mt-5">
-    <p class="mb-0 small">&copy; 2026 - Taller de Motos - Arquitectura Hexagonal</p>
+
+
+
+<footer class="cfmoto-footer">
+
+    <div class="footer-content">
+
+        <!-- MARCA -->
+        <div class="footer-brand">
+
+            <img src="/img/logo-cfmoto.png.png"
+                 alt="CFMOTO"
+                 class="footer-logo">
+
+            <h3>CF-MOTOS <span>TALLER</span></h3>
+
+            <p>
+                Pasión por las motocicletas, tecnología y
+                servicio especializado. Trabajamos para que
+                tu moto siempre esté lista para rodar.
+            </p>
+
+            <div class="footer-social">
+                <!-- FACEBOOK -->
+                <a href="https://www.facebook.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Facebook">
+
+                    <img src="/img/facebook.png" alt="Facebook">
+                </a>
+
+                <!-- INSTAGRAM -->
+                <a href="https://www.instagram.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Instagram">
+
+                    <img src="/img/instagram.png" alt="Instagram">
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="https://wa.me/57XXXXXXXXXX"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="WhatsApp">
+
+                    <img src="/img/whatsapp.png" alt="WhatsApp">
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ENLACES -->
+        <div class="footer-navigation">
+
+            <h4>Explora nuestro sitio</h4>
+
+            <span class="footer-underline"></span>
+
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/motorcycles">Motos</a></li>
+                <li><a href="/clients">Clientes</a></li>
+                <li><a href="/maintenances">Mantenimientos</a></li>
+            </ul>
+
+        </div>
+
+        <!-- SERVICIOS -->
+        <div class="footer-services">
+
+            <h4>Nuestro compromiso</h4>
+
+            <span class="footer-underline"></span>
+
+            <p>Servicio profesional</p>
+            <p>Calidad y confianza</p>
+            <p>Atención especializada</p>
+            <p>Pasión por las motocicletas</p>
+
+        </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 <strong>CF-MOTOS TALLER</strong>.
+            Todos los derechos reservados.
+        </p>
+
+    </div>
+
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
