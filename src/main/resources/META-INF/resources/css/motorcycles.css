@@ -1,0 +1,1746 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap');
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.cfmoto-header {
+    display: flex;
+    width: 1000px;
+    height: 75px;
+    background: linear-gradient(to right, #fbfbfc);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    font-family: 'Inter', sans-serif;
+    box-shadow: inset 0 -7px 0 0 #159b9d;
+    border-bottom-right-radius: 85px;
+    margin-bottom: 0;
+}
+
+/* --- SECCIÓN DEL LOGO --- */
+.logo-section {
+    background-color: #fbfbfc;
+    width: 340px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    position: relative;
+    z-index: 2;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 35px) 100%, 0 100%);
+}
+
+/* Línea turquesa más gruesa exclusiva para el área del logo */
+.logo-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-color: #159b9d;
+}
+
+.logo-section img {
+    height: 60px;
+    object-fit: contain;
+}
+
+
+/* --- NAVEGACIÓN Y ENLACES --- */
+.nav-section {
+    display: flex;
+    align-items: center;
+    padding-left: 3.5rem;
+    flex-grow: 1;
+}
+
+.nav-section ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 4.5rem;
+}
+
+.nav-section a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 4px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Subrayado del enlace activo y hover */
+.nav-section li.active a {
+    border-bottom: 3px solid #159b9d;
+}
+
+.nav-section a:hover {
+    color: #159b9d;
+}
+
+.nav-section a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 4px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-section li.active a {
+    border-bottom: 3px solid #159b9d;
+}
+
+/* --- NUEVO EFECTO HOVER --- */
+.nav-section a:hover {
+    color: #159b9d;
+    border-bottom: 3px solid #159b9d;
+    text-shadow: 0 0 12px rgba(21, 155, 157, 0.6);
+}
+
+
+/* --- VARIABLES Y UTILIDADES --- */
+:root {
+    --cyan-cfmoto: #159b9d;
+    --dark-text: #111827;
+}
+
+.text-cyan {
+    color: var(--cyan-cfmoto);
+}
+
+
+
+
+.cfmoto-banner1 {
+    width: 100%;
+    height: 490px;
+    position: relative;
+    overflow: hidden;
+    background: #092c47;
+}
+
+.cfmoto-banner1 img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.cfmoto-banner1-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            90deg,
+            rgba(3, 20, 35, .85),
+            rgba(3, 20, 35, .25),
+            transparent
+    );
+}
+
+
+.cfmoto-banner1-content {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 9%;
+    transform: translateY(-50%);
+    max-width: 650px;
+}
+
+.cfmoto-banner1-content span {
+    color: #19c5c5;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
+
+.cfmoto-banner1-content h1 {
+    color: white;
+    font-size: clamp(45px, 6vw, 78px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin: 20px 0;
+}
+
+.cfmoto-banner1-content h1 strong {
+    color: #19b7b9;
+}
+
+.cfmoto-banner1-content p {
+    color: #ffffff;
+    font-size: 17px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 768px) {
+    .cfmoto-banner1 {
+        height: 480px;
+    }
+
+    .cfmoto-banner1-content {
+        left: 7%;
+        right: 7%;
+    }
+}
+
+@media(max-width: 480px) {
+    .cfmoto-banner1 {
+        height: 390px;
+    }
+}
+
+
+
+
+
+
+
+/* ==========================================
+   FOOTER CFMOTO - FUTURISTIC RACING
+========================================== */
+
+.cfmoto-footer {
+    position: relative;
+    width: 100%;
+    margin-top: 70px;
+
+    background-image: url('/img/footer.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+
+    overflow: hidden;
+}
+
+/* CAPA OSCURA PARA LEGIBILIDAD */
+
+.footer-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+            100deg,
+            rgba(2, 15, 29, 0.96),
+            rgba(3, 26, 46, 0.88),
+            rgba(2, 17, 32, 0.93)
+    );
+
+    z-index: 1;
+}
+
+/* CONTENIDO */
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1400px;
+    margin: auto;
+
+    padding: 75px 55px 65px;
+
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr 1fr;
+
+    gap: 80px;
+}
+
+/* ==========================================
+   MARCA
+========================================== */
+
+.footer-brand {
+    max-width: 400px;
+}
+
+.footer-logo {
+    width: 190px;
+    height: 65px;
+    object-fit: contain;
+    object-position: left center;
+
+    margin-bottom: 15px;
+
+    filter: drop-shadow(
+            0 0 10px rgba(0, 210, 245, 0.3)
+    );
+
+    transition: 0.35s ease;
+}
+
+.footer-logo:hover {
+    transform: translateY(-4px);
+    filter: drop-shadow(
+            0 0 17px rgba(0, 217, 245, 0.65)
+    );
+}
+
+.footer-brand h3 {
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+
+    margin-bottom: 15px;
+}
+
+.footer-brand h3 span {
+    color: #00cce5;
+}
+
+.footer-brand p {
+    color: #b2c8d9;
+    font-size: 14px;
+    line-height: 1.9;
+
+    margin-bottom: 25px;
+}
+
+/* REDES SOCIALES */
+
+.footer-social {
+    display: flex;
+    gap: 13px;
+}
+
+.footer-social a {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #19d5ed;
+    font-size: 18px;
+
+    background: rgb(0 195 225 / 0);
+
+    border: 1px solid rgba(0, 205, 235, 0.35);
+    border-radius: 11px;
+
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #ffffff;
+
+    background: #079eb8;
+
+    transform: translateY(-5px);
+
+    box-shadow:
+            0 0 18px rgba(0, 205, 235, 0.45);
+}
+
+/* ==========================================
+   TÍTULOS
+========================================== */
+
+.footer-links h4,
+.footer-contact h4 {
+    color: #ffffff;
+
+    font-size: 19px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 13px;
+}
+
+.footer-line {
+    display: block;
+
+    width: 45px;
+    height: 3px;
+
+    margin-bottom: 27px;
+
+    background: linear-gradient(
+            90deg,
+            #00d8f5,
+            #159b9d
+    );
+
+    border-radius: 5px;
+
+    box-shadow:
+            0 0 10px rgba(0, 217, 245, 0.55);
+}
+
+/* ==========================================
+   ENLACES
+========================================== */
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 18px;
+}
+
+.footer-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #b8cad9;
+    font-size: 15px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+.footer-links a i {
+    color: #05c8e5;
+    font-size: 12px;
+
+    transition: transform 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #00d9f5;
+    transform: translateX(7px);
+
+    text-shadow:
+            0 0 10px rgba(0, 217, 245, 0.3);
+}
+
+.footer-links a:hover i {
+    transform: translateX(4px);
+}
+
+/* ==========================================
+   INFORMACIÓN DEL TALLER
+========================================== */
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.contact-item > i {
+    min-width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #00d9f5;
+    font-size: 19px;
+
+    background: rgba(0, 200, 230, 0.10);
+
+    border: 1px solid rgba(0, 210, 240, 0.25);
+    border-radius: 11px;
+
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover > i {
+    background: #079eb8;
+    color: #ffffff;
+
+    box-shadow:
+            0 0 15px rgba(0, 210, 240, 0.4);
+}
+
+.contact-item strong {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.contact-item p {
+    color: #a9bdce;
+    font-size: 13px;
+    line-height: 1.6;
+
+    margin: 5px 0 0;
+}
+
+/* ==========================================
+   COPYRIGHT
+========================================== */
+
+.footer-bottom {
+    position: relative;
+    z-index: 2;
+
+    min-height: 70px;
+
+    padding: 20px 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    background: rgba(0, 8, 20, 0.78);
+
+    border-top: 1px solid rgba(0, 210, 240, 0.25);
+}
+
+.footer-bottom p,
+.footer-bottom span {
+    color: #9db4c7;
+    font-size: 12px;
+    margin: 0;
+}
+
+.footer-bottom strong {
+    color: #ffffff;
+}
+
+.footer-bottom span {
+    color: #00cce5;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 950px) {
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 45px;
+        padding: 55px 35px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .cfmoto-footer {
+        margin-top: 45px;
+        background-position: center;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding: 45px 25px;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        padding: 22px 15px;
+    }
+
+}
+
+
+
+
+/* ==========================================
+   PÁGINA DE MOTOCICLETAS
+========================================== */
+
+.motorcycles-page {
+    width: 100%;
+    min-height: 750px;
+
+    padding: 155px 35px 90px;
+
+    background:
+            radial-gradient(
+                    circle at 90% 10%,
+                    rgba(21, 155, 157, 0.08),
+                    transparent 30%
+            ),
+            #ffffff;
+
+    font-family: 'Inter', sans-serif;
+}
+
+.motorcycles-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   ENCABEZADO
+========================================== */
+
+.motorcycles-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 38px;
+}
+
+.heading-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #159b9d;
+    margin-bottom: 14px;
+}
+
+.heading-dot,
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    background: #13c9a4;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(19, 201, 164, .7);
+}
+
+.heading-information h1 {
+    color: #092c47;
+
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 850;
+
+    letter-spacing: -1.2px;
+    margin: 0 0 10px;
+}
+
+.heading-information h1 span {
+    color: #159b9d;
+}
+
+.heading-information p {
+    color: #718397;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ==========================================
+   BOTÓN NUEVA MOTO
+========================================== */
+
+.btn-new-moto {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 13px 23px;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 750;
+
+    background: linear-gradient(
+            110deg,
+            #1e9fa5,
+            #1187a1
+    );
+
+    border: 1px solid #ffffff;
+    border-radius: 11px;
+
+    box-shadow:
+            0 6px 18px rgba(8, 43, 70, .18),
+            0 0 10px rgba(21, 155, 157, .12);
+
+    transition: all .3s ease;
+}
+
+.btn-new-moto:hover {
+    color: #ffffff;
+    transform: translateY(-4px);
+
+    box-shadow:
+            0 10px 25px rgba(8, 43, 70, .25),
+            0 0 18px rgba(21, 155, 157, .35);
+}
+
+.btn-icon {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #1e9fa5;
+    background: #ffffff;
+
+    border-radius: 7px;
+    font-size: 21px;
+}
+
+/* ==========================================
+   ALERTAS
+========================================== */
+
+.moto-alert {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 16px 20px;
+    margin-bottom: 25px;
+
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.moto-alert .btn-close {
+    margin-left: auto;
+}
+
+.moto-alert-success {
+    color: #087c65;
+    background: #e4f8f2;
+    border: 1px solid #b8eadb;
+}
+
+.moto-alert-error {
+    color: #b42335;
+    background: #fff0f1;
+    border: 1px solid #ffd0d4;
+}
+
+/* ==========================================
+   TARJETA PRINCIPAL
+========================================== */
+
+.motorcycles-card {
+    background: #ffffff;
+
+    border: 1px solid #e5edf2;
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+            0 12px 35px rgba(8, 43, 70, .07),
+            0 2px 8px rgba(8, 43, 70, .03);
+
+    transition: box-shadow .3s ease;
+}
+
+.motorcycles-card:hover {
+    box-shadow:
+            0 18px 40px rgba(8, 43, 70, .10);
+}
+
+/* CABECERA DE LA TABLA */
+
+.motorcycles-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 27px 30px;
+
+    border-bottom: 1px solid #edf1f5;
+}
+
+.table-eyebrow {
+    color: #159b9d;
+
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 2px;
+}
+
+.motorcycles-card-header h3 {
+    color: #102f49;
+
+    font-size: 21px;
+    font-weight: 800;
+
+    margin: 6px 0;
+}
+
+.motorcycles-card-header p {
+    color: #8998a7;
+    font-size: 13px;
+    margin: 0;
+}
+
+.fleet-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 10px 15px;
+
+    background: #e9f9f5;
+    border: 1px solid #c9eee4;
+    border-radius: 30px;
+
+    color: #128b72;
+    font-size: 12px;
+    font-weight: 750;
+}
+
+/* ==========================================
+   TABLA
+========================================== */
+
+.motorcycles-table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+.motorcycles-table thead {
+    background: #f3f8fb;
+}
+
+.motorcycles-table th {
+    padding: 19px 20px;
+
+    color: #668096;
+
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 1.1px;
+
+    border-bottom: 1px solid #e6edf2;
+}
+
+.motorcycles-table td {
+    padding: 19px 20px;
+
+    color: #53677a;
+    font-size: 13px;
+    font-weight: 500;
+
+    border-bottom: 1px solid #edf1f4;
+
+    transition: background .25s ease;
+}
+
+.motorcycles-table tbody tr {
+    transition: all .25s ease;
+}
+
+.motorcycles-table tbody tr:hover {
+    background: #f0fafb;
+}
+
+.motorcycles-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.moto-id {
+    color: #9aa9b7 !important;
+    font-weight: 700 !important;
+}
+
+/* PLACA */
+
+.plate-label {
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    color: #000000;
+    background: linear-gradient(
+            120deg,
+            #e1a72f,
+            #e1a72f
+    );
+
+    border: 1px solid #000000;
+    border-radius: 6px;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* MARCA */
+
+.moto-brand {
+    color: #102f49 !important;
+    font-weight: 800 !important;
+}
+
+/* PROPIETARIO */
+
+.owner-information {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #314b61;
+    font-weight: 650;
+}
+
+.owner-avatar {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    background: linear-gradient(
+            135deg,
+            #087d91,
+            #20c7ce
+    );
+
+    border-radius: 9px;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* ==========================================
+   ACCIONES
+========================================== */
+
+.actions-heading {
+    text-align: center;
+}
+
+.moto-actions {
+    text-align: center;
+}
+
+.action-button {
+    width: 36px;
+    height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 3px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+    font-size: 14px;
+
+    transition: all .25s ease;
+}
+
+.edit-button {
+    color: #a87514;
+
+    background: #fff7e6;
+    border: 1px solid #f4dfae;
+}
+
+.edit-button:hover {
+    color: #ffffff;
+    background: #e4a32a;
+
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(228, 163, 42, .25);
+}
+
+.delete-button {
+    color: #d34b58;
+
+    background: #fff0f1;
+    border: 1px solid #f6cbd0;
+}
+
+.delete-button:hover {
+    color: #ffffff;
+    background: #dc4654;
+
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(220, 70, 84, .25);
+}
+
+/* ==========================================
+   PIE DE TABLA
+========================================== */
+
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px 28px;
+
+    background: #f8fafc;
+    border-top: 1px solid #edf1f4;
+}
+
+.table-footer span:first-child {
+    color: #159b9d;
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 1px;
+}
+
+.table-footer span:last-child {
+    color: #98a7b5;
+    font-size: 11px;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 768px) {
+
+    .motorcycles-page {
+        padding: 45px 16px 60px;
+    }
+
+    .motorcycles-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .btn-new-moto {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .motorcycles-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+        padding: 22px;
+    }
+
+    .motorcycles-table th,
+    .motorcycles-table td {
+        padding: 15px;
+    }
+
+    .table-footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
+
+
+
+
+/* ==========================================
+   BANNER PRINCIPAL CFMOTO
+========================================== */
+
+.cfmoto-banner {
+    width: 100%;
+    height: 380px;
+
+    position: relative;
+    overflow: hidden;
+
+    background: #092c47;
+}
+
+.cfmoto-banner img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform .7s ease;
+}
+
+.cfmoto-banner:hover img {
+    transform: scale(1.02);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .cfmoto-banner {
+        height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cfmoto-banner {
+        height: 160px;
+    }
+}
+
+
+
+
+
+/* ==========================================
+   CFMOTO - MOTOCICLETAS
+========================================== */
+
+.cfmoto-models {
+    width: 100%;
+    padding: 155px 35px 90px;
+
+    background:
+            radial-gradient(
+                    circle at 90% 5%,
+                    rgba(21, 155, 157, .09),
+                    transparent 28%
+            ),
+            #ffffff;
+
+    font-family: 'Inter', sans-serif;
+}
+
+.cfmoto-models-container {
+    max-width: 1400px;
+    margin: auto;
+}
+
+/* ENCABEZADO */
+
+.cfmoto-models-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.models-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #0e99be;
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+}
+
+.heading-dot {
+    width: 8px;
+    height: 8px;
+    background: #13c9a4;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(19, 201, 164, .7);
+}
+
+.cfmoto-models-heading h2 {
+    color: #092c47;
+    font-size: clamp(27px, 3vw, 38px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+.cfmoto-models-heading h2 span {
+    color: #0e99be;
+}
+
+.cfmoto-models-heading p {
+    color: #718397;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* GRID */
+
+.cfmoto-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+
+/* CARD */
+
+.cfmoto-bike-card {
+    position: relative;
+    background: #ffffff;
+
+    border: 1px solid #e3edf0;
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+            0 10px 30px rgba(8, 43, 70, .06);
+
+    transition: all .35s ease;
+}
+
+.cfmoto-bike-card:hover {
+    transform: translateY(-9px);
+
+    border-color: #0e99be;
+
+    box-shadow:
+            0 20px 40px rgba(8, 43, 70, .12),
+            0 0 20px rgb(14 153 190);
+}
+
+/* IMAGEN */
+
+.bike-image {
+    height: 245px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+            radial-gradient(
+                    circle at center,
+                    #eaf5f5 0%,
+                    #f6f9fa 55%,
+                    #ffffff 100%
+            );
+
+    overflow: hidden;
+}
+
+.bike-image::after {
+    content: '';
+    position: absolute;
+
+    width: 75%;
+    height: 2px;
+    bottom: 18px;
+
+    background: linear-gradient(
+            90deg,
+            transparent,
+            #0e99be,
+            transparent
+    );
+
+    opacity: .55;
+}
+
+.bike-image img {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    transition: transform .5s ease;
+}
+
+.cfmoto-bike-card:hover .bike-image img {
+    transform: scale(1.08);
+}
+
+/* CATEGORÍA */
+
+.bike-category {
+    position: absolute;
+    top: 17px;
+    left: 17px;
+    z-index: 2;
+
+    padding: 7px 12px;
+
+    color: #ffffff;
+    background: #0e99be;
+
+    border-radius: 5px;
+
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1.2px;
+
+    box-shadow: 0 4px 12px rgba(21, 155, 157, .2);
+}
+
+/* INFORMACIÓN */
+
+.bike-content {
+    padding: 24px 23px 23px;
+}
+
+.bike-reference {
+    color: #0e99be;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 2px;
+}
+
+.bike-content h3 {
+    color: #092c47;
+
+    font-size: 26px;
+    font-weight: 900;
+
+    letter-spacing: -.5px;
+    margin: 5px 0 20px;
+}
+
+/* ESPECIFICACIONES */
+
+.bike-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    padding: 16px 0;
+
+    border-top: 1px solid #edf1f4;
+    border-bottom: 1px solid #edf1f4;
+
+    gap: 8px;
+}
+
+.bike-specs div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #0e99be;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .4px;
+
+    text-align: center;
+}
+
+.bike-specs i {
+    color: #0e99be;
+    font-size: 20px;
+}
+
+/* BOTÓN CATÁLOGO */
+
+.bike-catalog-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding: 14px 17px;
+
+    margin-top: 21px;
+
+    color: #ffffff;
+    background: linear-gradient(
+            110deg,
+            #0e99be,
+            #087f96
+    );
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 1px;
+
+    transition: all .3s ease;
+}
+
+.bike-catalog-btn i {
+    font-size: 17px;
+    transition: transform .3s ease;
+}
+
+.bike-catalog-btn:hover {
+    color: #ffffff;
+
+    background: rgb(17 135 161);
+
+    border-color: #159b9d;
+
+    box-shadow: 0 7px 18px rgba(21, 155, 157, .2);
+}
+
+.bike-catalog-btn:hover i {
+    transform: translate(4px, -3px);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .cfmoto-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cfmoto-models {
+        padding: 115px 16px 55px;
+    }
+
+    .cfmoto-models-heading {
+        margin-bottom: 30px;
+    }
+
+    .cfmoto-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .bike-image {
+        height: 240px;
+    }
+
+    .bike-content {
+        padding: 22px 18px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* ======================================
+   FOOTER CFMOTO
+====================================== */
+
+.cfmoto-footer {
+    width: 100%;
+    position: relative;
+
+    background-image: url('/img/footer.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+
+    margin-top: 70px;
+}
+
+/* CONTENIDO PRINCIPAL */
+
+.footer-content {
+    max-width: 1450px;
+    margin: auto;
+
+    padding: 75px 55px 65px;
+
+    display: grid;
+    grid-template-columns: 1.3fr 0.8fr 1fr;
+
+    gap: 90px;
+    align-items: start;
+}
+
+/* ======================================
+   MARCA
+====================================== */
+
+.footer-brand {
+    max-width: 400px;
+}
+
+.footer-logo {
+    width: 200px;
+    height: 65px;
+    object-fit: contain;
+    object-position: left center;
+
+    margin-bottom: 15px;
+
+    filter: drop-shadow(0 0 8px rgba(0, 210, 245, .35));
+
+    transition: transform .35s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.05);
+}
+
+.footer-brand h3 {
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+
+    margin: 5px 0 15px;
+
+    text-shadow: 0 2px 8px #001321;
+}
+
+.footer-brand h3 span {
+    color: #00d9f5;
+}
+
+.footer-brand p {
+    font-size: 14px;
+    line-height: 1.9;
+
+    color: #e2f4ff;
+
+    text-shadow: 0 2px 7px #001321;
+}
+
+
+/* REDES SOCIALES */
+
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.footer-social a {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 30, 50, 0.65);
+
+    border: 1px solid rgba(0, 217, 245, 0.55);
+    border-radius: 13px;
+
+    transition: all 0.35s ease;
+}
+
+.footer-social img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+
+    filter: brightness(0) invert(1);
+
+    transition: all 0.35s ease;
+}
+
+.footer-social a:hover {
+    background: #00cce5;
+    border-color: #00eaff;
+
+    transform: translateY(-6px);
+
+    box-shadow: 0 0 20px rgba(0, 217, 245, 0.6);
+}
+
+.footer-social a:hover img {
+    filter: brightness(0);
+    transform: scale(1.12);
+}
+
+/* ======================================
+   NAVEGACIÓN
+====================================== */
+
+.footer-navigation h4,
+.footer-services h4 {
+    font-size: 19px;
+    font-weight: 800;
+    color: #ffffff;
+
+    margin: 5px 0 12px;
+
+    text-shadow: 0 2px 8px #001321;
+}
+
+.footer-underline {
+    display: block;
+
+    width: 48px;
+    height: 3px;
+
+    background: #00d9f5;
+    border-radius: 5px;
+
+    box-shadow: 0 0 12px #00d9f5;
+
+    margin-bottom: 25px;
+}
+
+.footer-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-navigation li {
+    margin-bottom: 17px;
+}
+
+.footer-navigation a {
+    position: relative;
+
+    color: #e2f4ff;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    text-shadow: 0 2px 7px #001321;
+
+    transition: .3s ease;
+}
+
+.footer-navigation a::before {
+    content: "›";
+
+    color: #00d9f5;
+    font-size: 22px;
+
+    margin-right: 10px;
+
+    transition: .3s ease;
+}
+
+.footer-navigation a:hover {
+    color: #00d9f5;
+    padding-left: 7px;
+}
+
+.footer-navigation a:hover::before {
+    margin-right: 15px;
+}
+
+/* ======================================
+   COMPROMISO
+====================================== */
+
+.footer-services p {
+    color: #e2f4ff;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    margin-bottom: 18px;
+
+    text-shadow: 0 2px 7px #001321;
+
+    transition: .3s ease;
+}
+
+.footer-services p::before {
+    content: "✓";
+
+    color: #00d9f5;
+    font-weight: 900;
+
+    margin-right: 12px;
+}
+
+.footer-services p:hover {
+    color: #00d9f5;
+    transform: translateX(5px);
+}
+
+/* ======================================
+   COPYRIGHT
+====================================== */
+
+.footer-bottom {
+    width: 100%;
+    min-height: 65px;
+    padding: 18px 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    border-top: 1px solid rgba(0, 217, 245, .45);
+    background: rgba(0, 12, 27, .65);
+}
+
+.footer-bottom p {
+    color: #d8eaf5;
+    font-size: 12px;
+    margin: 0;
+
+    text-shadow: 0 2px 5px #001321;
+}
+
+.footer-bottom strong {
+    color: #00d9f5;
+    font-size: 13px;
+    margin: 0;
+    text-shadow: 0 2px 5px #001321;
+}
+
+.footer-bottom strong {
+    color: #00d9f5;
+}
+
+/* ======================================
+   RESPONSIVE
+====================================== */
+
+@media (max-width: 900px) {
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 45px;
+        padding: 55px 35px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 45px 25px;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        padding: 22px 15px;
+    }
+
+}
+

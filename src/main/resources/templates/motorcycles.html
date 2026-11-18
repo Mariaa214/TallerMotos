@@ -1,96 +1,537 @@
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Taller de Motos - Motocicletas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="CF-MOTOS TALLER: servicio especializado en reparación y mantenimiento de motocicletas.">
+
+    <title>CF-MOTOS TALLER</title>
+
+    <link rel="icon" href="/img/logo-header.png" type="image/png">
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+            rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+            rel="stylesheet">
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="/css/motorcycles.css">
 </head>
-<body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="/">Taller de Motos 🏍️</a>
-        <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="/">Inicio</a>
-            <a class="nav-link active" href="/motorcycles">Motos</a>
-            <a class="nav-link" href="/clients">Clientes</a>
-            <a class="nav-link" href="/maintenances">Mantenimientos</a>
-        </div>
-    </div>
-</nav>
+<body class="d-flex flex-column min-vh-100">
 
-<main class="container my-5">
+<!-- ENCABEZADO -->
+<header class="cfmoto-header">
 
-
-    {#if success}
-        <div class="alert alert-success alert-dismissible fade show shadow-sm mb-4" role="alert">
-            <i class="bi bi-check-circle-fill me-2"></i>{success}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {/if}
-    {#if error}
-        <div class="alert alert-danger alert-dismissible fade show shadow-sm mb-4" role="alert">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>{error}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {/if}
-
-
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-dark mb-0"><i class="bi bi-motorcycle me-2"></i>Gestión de Motocicletas</h2>
-        <a href="/motorcycles/new" class="btn btn-primary shadow-sm">
-            <i class="bi bi-plus-circle me-1"></i> Nueva Moto
+    <div class="logo-section">
+        <a href="/" aria-label="Ir al inicio">
+            <img
+                    src="/img/logo-cfmoto.png.png"
+                    alt="Logo de CFMOTO">
         </a>
     </div>
 
-    <div class="card shadow-sm border-0 mb-5 rounded-4 overflow-hidden bg-white">
-        <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
-            <h5 class="mb-0 fw-bold text-primary">Motocicletas Registradas</h5>
-            <span class="badge bg-primary rounded-pill px-3 py-2">Flota Activa</span>
-        </div>
-        <div class="card-body p-0">
+    <nav class="nav-section" aria-label="Navegación principal">
+        <ul>
+            <li>
+                <a href="/" aria-current="page">Inicio</a>
+            </li>
+            <li>
+                <a href="/motorcycles">Motos</a>
+            </li>
+            <li>
+                <a href="/clients">Clientes</a>
+            </li>
+            <li>
+                <a href="/maintenances">Mantenimientos</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<section class="cfmoto-banner1">
+    <img src="/img/Banner2.jpg" alt="CFMOTO">
+
+    <div class="cfmoto-banner1-overlay"></div>
+    <div class="cfmoto-banner1-content">
+        <span>DESCUBRE TU LIBERTAD</span>
+        <h1>GESTIÓN DE<br><strong>MOTOCICLETAS</strong></h1>
+        <p>Administra, consulta y controla las motocicletas registradas en tu taller.</p>
+    </div>
+</section>
+
+
+
+
+<main class="motorcycles-page">
+
+    <div class="motorcycles-container">
+
+        <!-- MENSAJES -->
+        {#if success}
+            <div class="moto-alert moto-alert-success">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>{success}</span>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="alert"></button>
+            </div>
+        {/if}
+
+        {#if error}
+            <div class="moto-alert moto-alert-error">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                <span>{error}</span>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="alert"></button>
+            </div>
+        {/if}
+
+        <!-- ENCABEZADO -->
+        <section class="motorcycles-heading">
+
+            <a href="/motorcycles/new" class="btn-new-moto">
+                <span class="btn-icon">+</span>
+                Nueva motocicleta
+            </a>
+
+        </section>
+
+        <!-- TABLA -->
+        <section class="motorcycles-card">
+
+            <div class="motorcycles-card-header">
+
+                <div>
+
+                    <h3>Motocicletas registradas</h3>
+                    <p>Información de los vehículos de tus clientes</p>
+                </div>
+            </div>
+
             <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
-                    <thead class="table-light text-secondary small text-uppercase">
+
+                <table class="motorcycles-table">
+
+                    <thead>
                     <tr>
-                        <th class="ps-4">ID</th>
-                        <th>Placa</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Propietario</th>
-                        <th class="pe-4 text-end">Acciones</th>
+                        <th>ID</th>
+                        <th>PLACA</th>
+                        <th>MARCA</th>
+                        <th>MODELO</th>
+                        <th>PROPIETARIO</th>
+                        <th class="actions-heading">ACCIONES</th>
                     </tr>
                     </thead>
+
                     <tbody>
+
                     {#for moto in motorcycles}
+
                         <tr>
-                            <td class="ps-4 text-muted">#{moto.id}</td>
-                            <td><span class="badge bg-dark text-white font-monospace px-2 py-1">{moto.plate}</span></td>
-                            <td class="fw-semibold">{moto.brand}</td>
-                            <td>{moto.modelLine}</td>
-                            <td><i class="bi bi-person-fill text-muted me-1"></i>{moto.client.fullName}</td>
-                            <td class="pe-4 text-end">
-                                <a href="/motorcycles/edit/{moto.id}" class="btn btn-sm btn-outline-warning me-1" title="Editar">
+
+                            <td class="moto-id">
+                                #{moto.id}
+                            </td>
+
+                            <td>
+                                <span class="plate-label">
+                                    {moto.plate}
+                                </span>
+                            </td>
+
+                            <td class="moto-brand">
+                                {moto.brand}
+                            </td>
+
+                            <td>
+                                {moto.modelLine}
+                            </td>
+
+                            <td>
+                                <div class="owner-information">
+                                    <span class="owner-avatar">
+                                        {moto.client.fullName.substring(0,1)}
+                                    </span>
+                                    <span>{moto.client.fullName}</span>
+                                </div>
+                            </td>
+
+                            <td class="moto-actions">
+
+                                <a href="/motorcycles/edit/{moto.id}"
+                                   class="action-button edit-button"
+                                   title="Editar">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <a href="/motorcycles/delete/{moto.id}" class="btn btn-sm btn-outline-danger" title="Eliminar" onclick="return confirm('¿Estás seguro de eliminar esta moto?');">
+
+                                <a href="/motorcycles/delete/{moto.id}"
+                                   class="action-button delete-button"
+                                   title="Eliminar"
+                                   onclick="return confirm('¿Estás seguro de eliminar esta moto?');">
                                     <i class="bi bi-trash"></i>
                                 </a>
+
                             </td>
+
                         </tr>
+
                     {/for}
+
                     </tbody>
+
                 </table>
+
             </div>
-        </div>
+
+            <div class="table-footer">
+                <span>CF-MOTOS TALLER</span>
+            </div>
+
+        </section>
+
     </div>
+
 </main>
 
-<footer class="text-center py-4 text-muted border-top bg-white mt-5">
-    <p class="mb-0 small">&copy; 2026 - Taller de Motos - Arquitectura Hexagonal</p>
-</footer>
+
+<section class="cfmoto-banner">
+    <img src="/img/Banner1.jpg" alt="CFMOTO - Potencia y aventura">
+</section>
+
+
+
+<section class="cfmoto-models">
+    <div class="cfmoto-models-container">
+
+        <!-- ENCABEZADO -->
+        <div class="cfmoto-models-heading">
+            <h2>
+                EXPLORA NUESTRAS <span>MOTOCICLETAS</span>
+            </h2>
+
+            <p>
+                Conoce cada modelo, descubre sus características
+                y consulta el catálogo completo de sus componentes.
+            </p>
+        </div>
+
+        <!-- GRID DE MOTOCICLETAS -->
+        <div class="cfmoto-grid">
+
+            <!-- MOTO 1 -->
+            <article class="cfmoto-bike-card">
+                <div class="bike-image">
+                    <span class="bike-category">SPORT</span>
+                    <img src="/img/450SR.png" alt="CFMOTO 450SR">
+                </div>
+
+                <div class="bike-content">
+                    <span class="bike-reference">SERIE SR</span>
+                    <h3>450 SR</h3>
+
+                    <div class="bike-specs">
+                        <div>
+                            <i class="bi bi-speedometer2"></i>
+                            <span>449 CC</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-gear"></i>
+                            <span>2 CILINDROS</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-lightning-charge"></i>
+                            <span>DEPORTIVA</span>
+                        </div>
+                    </div>
+
+                    <a href="https://www.cfmotomalaysia.com.my/Source/Spare_Part/parts_catalog/450SR_NP_20052024.pdf" class="bike-catalog-btn">
+                        <span>VER CATÁLOGO</span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- MOTO 2 -->
+            <article class="cfmoto-bike-card">
+                <div class="bike-image">
+                    <span class="bike-category">NAKED</span>
+                    <img src="/img/450NK.png" alt="CFMOTO 450NK">
+                </div>
+
+                <div class="bike-content">
+                    <span class="bike-reference">SERIE NK</span>
+                    <h3>450 NK</h3>
+
+                    <div class="bike-specs">
+                        <div>
+                            <i class="bi bi-speedometer2"></i>
+                            <span>449 CC</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-gear"></i>
+                            <span>2 CILINDROS</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-lightning-charge"></i>
+                            <span>NAKED</span>
+                        </div>
+                    </div>
+
+                    <a href="https://www.cfmotomalaysia.com.my/Source/owner_manual/450NK%20Owners%20Manual.pdf" class="bike-catalog-btn">
+                        <span>VER CATÁLOGO</span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- MOTO 3 -->
+            <article class="cfmoto-bike-card">
+                <div class="bike-image">
+                    <span class="bike-category">ADVENTURE</span>
+                    <img src="/img/450MT.png" alt="CFMOTO 450MT">
+                </div>
+
+                <div class="bike-content">
+                    <span class="bike-reference">SERIE MT</span>
+                    <h3>450 MT</h3>
+
+                    <div class="bike-specs">
+                        <div>
+                            <i class="bi bi-speedometer2"></i>
+                            <span>449 CC</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-gear"></i>
+                            <span>2 CILINDROS</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-compass"></i>
+                            <span>ADVENTURE</span>
+                        </div>
+                    </div>
+
+                    <a href="https://www.cfmotomalaysia.com.my/Source/Spare_Part/parts_catalog/450MT%20(U20240604)-NP.pdf" class="bike-catalog-btn">
+                        <span>VER CATÁLOGO</span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- MOTO 4 -->
+            <article class="cfmoto-bike-card">
+                <div class="bike-image">
+                    <span class="bike-category">NAKED</span>
+                    <img src="/img/250NK.png" alt="CFMOTO 250NK">
+                </div>
+
+                <div class="bike-content">
+                    <span class="bike-reference">SERIE NK</span>
+                    <h3>250 NK</h3>
+
+                    <div class="bike-specs">
+                        <div>
+                            <i class="bi bi-speedometer2"></i>
+                            <span>249 CC</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-gear"></i>
+                            <span>1 CILINDRO</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-lightning-charge"></i>
+                            <span>NAKED</span>
+                        </div>
+                    </div>
+
+                    <a href="https://www.cfmotomalaysia.com.my/Source/Spare_Part/parts_catalog/250NK%20(Y2020%20Version)%20NP%20(U31012024).pdf" class="bike-catalog-btn">
+                        <span>VER CATÁLOGO</span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- MOTO 5 -->
+            <article class="cfmoto-bike-card">
+                <div class="bike-image">
+                    <span class="bike-category">SPORT</span>
+                    <img src="/img/300SR.png" alt="CFMOTO 300SR">
+                </div>
+
+                <div class="bike-content">
+                    <span class="bike-reference">SERIE SR</span>
+                    <h3>300 SR</h3>
+
+                    <div class="bike-specs">
+                        <div>
+                            <i class="bi bi-speedometer2"></i>
+                            <span>292 CC</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-gear"></i>
+                            <span>1 CILINDRO</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-lightning-charge"></i>
+                            <span>DEPORTIVA</span>
+                        </div>
+                    </div>
+
+                    <a href="https://cfmotocolombia.com/wp-content/uploads/2025/05/FICHA-TECNICA-CFMOTO-300SR.pdf" class="bike-catalog-btn">
+                        <span>VER CATÁLOGO</span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- MOTO 6 -->
+            <article class="cfmoto-bike-card">
+                <div class="bike-image">
+                    <span class="bike-category">ADVENTURE</span>
+                    <img src="/img/800MT.png" alt="CFMOTO 800MT">
+                </div>
+
+                <div class="bike-content">
+                    <span class="bike-reference">SERIE MT</span>
+                    <h3>800 MT</h3>
+
+                    <div class="bike-specs">
+                        <div>
+                            <i class="bi bi-speedometer2"></i>
+                            <span>799 CC</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-gear"></i>
+                            <span>2 CILINDROS</span>
+                        </div>
+                        <div>
+                            <i class="bi bi-compass"></i>
+                            <span>ADVENTURE</span>
+                        </div>
+                    </div>
+
+                    <a href="https://www.cfmotomalaysia.com.my/Source/Spare_Part/parts_catalog/800MT%20(U20240904)-NP.pdf" class="bike-catalog-btn">
+                        <span>VER CATÁLOGO</span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<footer class="cfmoto-footer">
+
+    <div class="footer-content">
+
+        <!-- MARCA -->
+        <div class="footer-brand">
+
+            <img src="/img/logo-cfmoto.png.png"
+                 alt="CFMOTO"
+                 class="footer-logo">
+
+            <h3>CF-MOTOS <span>TALLER</span></h3>
+
+            <p>
+                Pasión por las motocicletas, tecnología y
+                servicio especializado. Trabajamos para que
+                tu moto siempre esté lista para rodar.
+            </p>
+
+            <div class="footer-social">
+                <!-- FACEBOOK -->
+                <a href="https://www.facebook.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Facebook">
+
+                    <img src="/img/facebook.png" alt="Facebook">
+                </a>
+
+                <!-- INSTAGRAM -->
+                <a href="https://www.instagram.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Instagram">
+
+                    <img src="/img/instagram.png" alt="Instagram">
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="https://wa.me/57XXXXXXXXXX"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="WhatsApp">
+
+                    <img src="/img/whatsapp.png" alt="WhatsApp">
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ENLACES -->
+        <div class="footer-navigation">
+
+            <h4>Explora nuestro sitio</h4>
+
+            <span class="footer-underline"></span>
+
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/motorcycles">Motos</a></li>
+                <li><a href="/clients">Clientes</a></li>
+                <li><a href="/maintenances">Mantenimientos</a></li>
+            </ul>
+
+        </div>
+
+        <!-- SERVICIOS -->
+        <div class="footer-services">
+
+            <h4>Nuestro compromiso</h4>
+
+            <span class="footer-underline"></span>
+
+            <p>Servicio profesional</p>
+            <p>Calidad y confianza</p>
+            <p>Atención especializada</p>
+            <p>Pasión por las motocicletas</p>
+
+        </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 <strong>CF-MOTOS TALLER</strong>.
+            Todos los derechos reservados.
+        </p>
+
+    </div>
+
+</footer>
+
 </body>
 </html>

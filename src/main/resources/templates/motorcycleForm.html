@@ -1,87 +1,236 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Taller de Motos - Gestión de Moto</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="CF-MOTOS TALLER: servicio especializado en reparación y mantenimiento de motocicletas.">
+
+    <title>CF-MOTOS TALLER</title>
+
+    <link rel="icon" href="/img/logo-header.png" type="image/png">
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+            rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+            rel="stylesheet">
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="/css/motorcycleForm.css">
 </head>
-<body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="/">Taller de Motos 🏍️</a>
-        <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="/motorcycles">Volver a Motos</a>
-        </div>
+<body class="d-flex flex-column min-vh-100">
+
+<!-- ENCABEZADO -->
+<header class="cfmoto-header">
+
+    <div class="logo-section">
+        <a href="/" aria-label="Ir al inicio">
+            <img
+                    src="/img/logo-cfmoto.png.png"
+                    alt="Logo de CFMOTO">
+        </a>
     </div>
-</nav>
 
-<main class="container my-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-sm border-0 rounded-4 p-4 bg-white">
+    <nav class="nav-section" aria-label="Navegación principal">
+        <ul>
+            <a class="nav-link" href="/motorcycles">Volver a Motos</a>
+        </ul>
+    </nav>
 
-
-                {#if motorcycle.id != null}
-                    <h3 class="fw-bold text-primary mb-4">
-                        <i class="bi bi-pencil-square me-2"></i>Editar Motocicleta
-                    </h3>
-                {#else}
-                    <h3 class="fw-bold text-primary mb-4">
-                        <i class="bi bi-plus-circle me-2"></i>Registrar Nueva Motocicleta
-                    </h3>
-                {/if}
+</header>
 
 
-                <form action="{action}" method="POST">
-                    {#if motorcycle.id != null}
-                        <input type="hidden" name="id" value="{motorcycle.id}">
-                    {/if}
+<main class="motorcycle-form-page">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-6">
 
-                    <div class="mb-3">
-                        <label for="plate" class="form-label fw-semibold">Placa</label>
-                        <input type="text" class="form-control" id="plate" name="plate" value="{motorcycle.plate ?: ''}" required>
-                    </div>
+                <div class="motorcycle-form-card">
 
-                    <div class="mb-3">
-                        <label for="brand" class="form-label fw-semibold">Marca</label>
-                        <input type="text" class="form-control" id="brand" name="brand" value="{motorcycle.brand ?: ''}" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="modelLine" class="form-label fw-semibold">Modelo / Línea</label>
-                        <input type="text" class="form-control" id="modelLine" name="modelLine" value="{motorcycle.modelLine ?: ''}" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="clientId" class="form-label fw-semibold">Propietario (Cliente)</label>
-                        <select class="form-select" id="clientId" name="clientId" required>
-                            <option value="">Seleccione un cliente...</option>
-                            {#for client in clients}
-                                <option value="{client.id}" {#if motorcycle.client && motorcycle.client.id == client.id}selected{/if}>{client.fullName} ({client.identification})</option>
-                            {/for}
-                        </select>
-                    </div>
-
-                    <div class="d-flex justify-content-between mt-4">
-                        <a href="/motorcycles" class="btn btn-secondary px-4">Cancelar</a>
+                    <div class="form-header">
 
                         {#if motorcycle.id != null}
-                            <button type="submit" class="btn btn-primary px-4 fw-bold">Guardar Cambios</button>
+                            <h3>Editar <span>Motocicleta</span></h3>
+                            <p>Actualiza la información de la motocicleta registrada.</p>
                         {#else}
-                            <button type="submit" class="btn btn-primary px-4 fw-bold">Registrar Moto</button>
+                            <span class="form-eyebrow">GESTIÓN DE MOTOCICLETAS</span>
+                            <h3>Registrar <span>Motocicleta</span></h3>
+                            <p>Completa los datos para registrar una nueva motocicleta.</p>
                         {/if}
                     </div>
-                </form>
+
+                    <div class="form-divider"></div>
+
+                    <form action="{action}" method="POST">
+
+                        {#if motorcycle.id != null}
+                            <input type="hidden" name="id" value="{motorcycle.id}">
+                        {/if}
+
+                        <div class="mb-4">
+                            <label for="plate" class="modern-label">
+                                <i class="bi bi-card-text"></i> Placa
+                            </label>
+                            <input type="text" class="form-control modern-input" id="plate" name="plate" value="{motorcycle.plate ?: ''}" placeholder="Ej. ABC123" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="brand" class="modern-label">
+                                <i class="bi bi-tags"></i> Marca
+                            </label>
+                            <input type="text" class="form-control modern-input" id="brand" name="brand" value="{motorcycle.brand ?: ''}" placeholder="Ej. CF MOTO" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="modelLine" class="modern-label">
+                                <i class="bi bi-motorcycle"></i> Modelo / Línea
+                            </label>
+                            <input type="text" class="form-control modern-input" id="modelLine" name="modelLine" value="{motorcycle.modelLine ?: ''}" placeholder="Ej. 450 NK" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="clientId" class="modern-label">
+                                <i class="bi bi-person-badge"></i> Propietario (Cliente)
+                            </label>
+                            <select class="form-select modern-input" id="clientId" name="clientId" required>
+                                <option value="">Seleccione un cliente...</option>
+                                {#for client in clients}
+                                    <option value="{client.id}" {#if motorcycle.client && motorcycle.client.id == client.id}selected{/if}>{client.fullName} ({client.identification})</option>
+                                {/for}
+                            </select>
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="/motorcycles" class="btn-cancel">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+
+                            {#if motorcycle.id != null}
+                                <button type="submit" class="btn-save">
+                                    <i class="bi bi-check2-circle"></i> Guardar Cambios
+                                </button>
+                            {#else}
+                                <button type="submit" class="btn-save">
+                                    <i class="bi bi-plus-circle"></i> Registrar Moto
+                                </button>
+                            {/if}
+                        </div>
+
+                    </form>
+                </div>
 
             </div>
         </div>
     </div>
 </main>
 
-<footer class="text-center py-4 text-muted border-top bg-white mt-5">
-    <p class="mb-0 small">&copy; 2026 - Taller de Motos - Arquitectura Hexagonal</p>
+
+
+<footer class="cfmoto-footer">
+
+    <div class="footer-content">
+
+        <!-- MARCA -->
+        <div class="footer-brand">
+
+            <img src="/img/logo-cfmoto.png.png"
+                 alt="CFMOTO"
+                 class="footer-logo">
+
+            <h3>CF-MOTOS <span>TALLER</span></h3>
+
+            <p>
+                Pasión por las motocicletas, tecnología y
+                servicio especializado. Trabajamos para que
+                tu moto siempre esté lista para rodar.
+            </p>
+
+            <div class="footer-social">
+                <!-- FACEBOOK -->
+                <a href="https://www.facebook.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Facebook">
+
+                    <img src="/img/facebook.png" alt="Facebook">
+                </a>
+
+                <!-- INSTAGRAM -->
+                <a href="https://www.instagram.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Instagram">
+
+                    <img src="/img/instagram.png" alt="Instagram">
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="https://wa.me/57XXXXXXXXXX"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="WhatsApp">
+
+                    <img src="/img/whatsapp.png" alt="WhatsApp">
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ENLACES -->
+        <div class="footer-navigation">
+
+            <h4>Explora nuestro sitio</h4>
+
+            <span class="footer-underline"></span>
+
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/motorcycles">Motos</a></li>
+                <li><a href="/clients">Clientes</a></li>
+                <li><a href="/maintenances">Mantenimientos</a></li>
+            </ul>
+
+        </div>
+
+        <!-- SERVICIOS -->
+        <div class="footer-services">
+
+            <h4>Nuestro compromiso</h4>
+
+            <span class="footer-underline"></span>
+
+            <p>Servicio profesional</p>
+            <p>Calidad y confianza</p>
+            <p>Atención especializada</p>
+            <p>Pasión por las motocicletas</p>
+
+        </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 <strong>CF-MOTOS TALLER</strong>.
+            Todos los derechos reservados.
+        </p>
+
+    </div>
+
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
