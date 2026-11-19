@@ -115,11 +115,11 @@ Quarkus 3 · Qute · Bootstrap 5 (CDN) · Hibernate ORM con Panache · MySQL · 
 
 * **Crear cliente:**
 
-  ![Crear cliente](docs/screenshots/02-Crear Cliente.png)
+  ![Crear cliente](<docs/screenshots/02-Crear Cliente.png>)
 
 * **Editar cliente:**
 
-  ![Editar cliente](docs/screenshots/03-Editar Cliente.png)
+ ![Editar cliente](<docs/screenshots/03-Editar Cliente.png>)
 
 * **Eliminar cliente:**
 
