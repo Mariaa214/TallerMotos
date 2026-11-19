@@ -108,7 +108,7 @@ Quarkus 3 · Qute · Bootstrap 5 (CDN) · Hibernate ORM con Panache · MySQL · 
 
 ## Funcionalidades- Capturas
 ### Inicio
-* **Inicio** `docs/screenshots/01-inicio.png`
+![Inicio](docs/screenshots/01-inicio.png)
 
 ### Gestión de clientes
 * **Crear cliente:** `docs/screenshots/02-Crear Cliente.png`
