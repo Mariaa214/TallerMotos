@@ -129,32 +129,32 @@ Quarkus 3 · Qute · Bootstrap 5 (CDN) · Hibernate ORM con Panache · MySQL · 
 
 * **Crear moto:**
 
-  ![Crear moto](docs/screenshots/05-Crear Moto.png)
+  ![Crear moto](<docs/screenshots/05-Crear Moto.png>)
 
 * **Editar moto:**
 
-  ![Editar moto](docs/screenshots/06-Editar Moto.png)
+  ![Editar moto](<docs/screenshots/06-Editar Moto.png>)
 
 * **Eliminar moto:**
 
-  ![Eliminar moto](docs/screenshots/07-Eliminar Moto.png)
+  ![Eliminar moto](<docs/screenshots/07-Eliminar Moto.png>)
 
 ### Historial de mantenimientos y PDF
 
 * **Crear mantenimiento:**
 
-  ![Crear mantenimiento](docs/screenshots/08-Crear Mantenimiento.png)
+  ![Crear mantenimiento](<docs/screenshots/08-Crear Mantenimiento.png>)
 
 * **Editar mantenimiento:**
 
-  ![Editar mantenimiento](docs/screenshots/09-Editar Mantenimiento.png)
+  ![Editar mantenimiento](<docs/screenshots/09-Editar Mantenimiento.png>)
 
 * **Eliminar mantenimiento:**
 
-  ![Eliminar mantenimiento](docs/screenshots/10-Eliminar Mantenimiento.png)
+  ![Eliminar mantenimiento](<docs/screenshots/10-Eliminar Mantenimiento.png>)
 
 * **Reporte PDF:**
 
-  ![Reporte PDF](docs/screenshots/11-Pdf.png)
+  ![Reporte PDF](<docs/screenshots/11-Pdf.png>)
 
 
