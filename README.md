@@ -123,7 +123,7 @@ Quarkus 3 · Qute · Bootstrap 5 (CDN) · Hibernate ORM con Panache · MySQL · 
 
 * **Eliminar cliente:**
 
-  ![Eliminar cliente](docs/screenshots/04-Eliminar Cliente.png)
+  ![Eliminar cliente](<docs/screenshots/04-Eliminar Cliente.png>)
 
 ### Gestión de motocicletas
 
