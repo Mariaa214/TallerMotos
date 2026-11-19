@@ -104,3 +104,25 @@ La única entrada del sistema son las vistas HTML.
 ## Tecnologías
 
 Quarkus 3 · Qute · Bootstrap 5 (CDN) · Hibernate ORM con Panache · MySQL · OpenPDF · SmallRye OpenAPI (Swagger) · Lombok
+
+
+## Funcionalidades- Capturas
+### Inicio
+* **Inicio** `screenshots/01-inicio.png`
+
+### Gestión de clientes
+* **Crear cliente:** `screenshots/02-Crear Cliente.png`
+* **Editar cliente:** `screenshots/03-Editar Cliente.png`
+* **Eliminar cliente:** `screenshots/04-Eliminar Cliente.png`
+
+### Gestión de motocicletas
+* **Crear moto:** `screenshots/05-Crear Moto.png`
+* **Editar moto:** `screenshots/06-Editar Moto.png`
+* **Eliminar moto:** `screenshots/07-Eliminar Moto.png`
+
+### Historial de mantenimientos y PDF
+* **Crear mantenimiento:** `screenshots/08-Crear Mantenimiento.png`
+* **Editar mantenimiento:** `screenshots/09-Editar Mantenimiento.png`
+* **Eliminar mantenimiento:** `screenshots/10-Eliminar Mantenimiento.png`
+* **Reporte PDF:** `screenshots/11-Pdf.png`
+
